@@ -205,7 +205,6 @@ class Portal extends CI_Controller {
 	
 	public function submitAssessment(){
 		$assessmentID = $this->encrypt->decode($this->input->post_get("assessmentID"));
-		echo $assessmentID;
 		$assessment = $this->assessment->load($assessmentID);
 		$courseID = $this->input->post_get("courseID");
 		
@@ -227,7 +226,7 @@ class Portal extends CI_Controller {
 		$attemptData['assessmentID'] = $assessmentID;
 		$attemptData['questionSet'] = $questionSet;
 		$attemptData['minuteTaken'] = $minuteTaken;		
-		$attemptData['timeStamp'] = $startedAt;		
+		$attemptData['timeStamp'] = convertToMySqlTimeStamp($startedAt);		
 		
 		$marksObtained = 0;
 		$totalQuestions = count($questions);
@@ -250,6 +249,7 @@ class Portal extends CI_Controller {
 		
 		$attemptData['markObtained'] = $marksObtained;
 		$attemptData['result'] = $result;
+		
 		$this->assessment->addAttempt($attemptData);
 		
 		if($this->input->is_ajax_request()){

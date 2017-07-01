@@ -17,7 +17,7 @@
 			</div>
 			<span class="pull-right">
 				<?php if($course->eligiblity === 'yes' && $course->isAvailable):?>
-					<a href="/employee/assessment/<?=$this->encrypt->encode($course->courseID);?>" title="Start Examination">
+					<a href="/employee/assessment/<?=$this->encrypt->encode($course->courseID);?>" title="Take Examination">
 						<i class="btn btn-xs fa fa-paper-plane"></i>
 					</a>
 				<?php else:?>

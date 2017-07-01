@@ -166,4 +166,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	function mergeDateTime($date , $time, $format = 'Y-m-d H:i:s'){
 		$string = $date." ".$time;
 	}
+	function convertToMySqlTimeStamp($date){
+		date_default_timezone_set("Asia/Kolkata");
+		$myDate = new DateTime($date);
+		return $myDate->format('Y-m-d H:i:s');
+	}
 ?>

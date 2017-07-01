@@ -5309,7 +5309,11 @@ button.close {
 .carousel-inner {
   position: relative;
   overflow: hidden;
-  width: 100%; }
+  width: 100%;
+  background:#E91E63;
+  border-top:2px dashed #084aad;
+  border-bottom:2px dashed #084aad;
+  }
   .carousel-inner > .item {
     display: none;
     position: relative;
@@ -5449,12 +5453,12 @@ button.close {
     border-radius: 10px;
     cursor: pointer;
     background-color: #000 \9;
-    background-color: transparent; }
+    background-color: #1E88E5; }
   .carousel-indicators .active {
     margin: 0;
     width: 12px;
     height: 12px;
-    background-color: #fff; }
+    background-color: #E91E63; }
 
 .carousel-caption {
   position: absolute;
@@ -7636,7 +7640,7 @@ button.btn, button.btn-secondary {
     right: 5px; }
 
 .header-call-to-action {
-  margin: 84px 0px;
+  margin: 5px 0px;
   text-align: center; }
   .header-call-to-action h1 {
     font-size: 40px;
