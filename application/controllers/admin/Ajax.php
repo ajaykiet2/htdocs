@@ -7,7 +7,7 @@ class Ajax extends CI_Controller {
 	public function __construct(){
 		#calling parent controller
 		parent::__construct();
-		
+		$this->db->cache_delete_all();
 		$this->load->model(array(
 			'employee',
 			'faq',

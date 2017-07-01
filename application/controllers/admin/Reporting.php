@@ -7,6 +7,7 @@ class Reporting extends CI_Controller {
    */
 	function __Construct(){
 		parent::__Construct();
+		$this->db->cache_delete_all();
 		$this->load->model('report'); 
 		$this->load->helper(array('form', 'url'));
 		$this->load->helper('download');

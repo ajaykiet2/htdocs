@@ -7,7 +7,7 @@ class Portal extends CI_Controller {
 	public function __construct(){
 		#calling parent controller
 		parent::__construct();
-		
+		$this->db->cache_delete_all();
 		$this->load->model(array('employee','faq','gallery', 'course','accreditation','chepter','assessment','slide'));
 		#loading other modules
 		#--------------
@@ -148,6 +148,7 @@ class Portal extends CI_Controller {
 		
 		$this->employee->updateCourse($courseID,$dataToUpdate);
 		$this->session->unset_userdata('startedAt','studyStartID');
+		
 		return true;
 	}
 	
@@ -156,17 +157,19 @@ class Portal extends CI_Controller {
 	public function assessment(){
 		$employeeID = $this->session->employeeID;
 		$courseID = $this->encrypt->decode($this->uri->segment(3));
+		$data['env'] = $this->environment->load('employee');
+		$data['employeeInfo'] = $this->employee->getInfo($employeeID);
 		$assessment = $this->assessment->get(array(
 			'courseID' => $courseID,
 		));
-		$data['env'] = $this->environment->load('employee');
-		$data['employeeInfo'] = $this->employee->getInfo($employeeID);
-		$data['assessment'] = $assessment;
-		$data['attempts'] = $this->assessment->getAttempts(array(
-			'assessmentID' => $assessment->assessmentID,
-			'employeeID' => $employeeID
-		));
-		if(!empty($data['assessment'])){
+		if(!empty($assessment)){
+			
+			$data['assessment'] = $assessment;
+			$data['attempts'] = $this->assessment->getAttempts(array(
+				'assessmentID' => $assessment->assessmentID,
+				'employeeID' => $employeeID
+			));
+		
 			$this->viewPage('employee/assessment_detail', $data);
 		}else{
 			$this->viewPage('employee/error404', $data);
@@ -226,7 +229,8 @@ class Portal extends CI_Controller {
 		$attemptData['employeeID'] = $employeeID;
 		$attemptData['assessmentID'] = $assessmentID;
 		$attemptData['questionSet'] = $questionSet;
-		$attemptData['minuteTaken'] = $minuteTaken;
+		$attemptData['minuteTaken'] = $minuteTaken;		
+		$attemptData['timeStamp'] = $startedAt;		
 		
 		$marksObtained = 0;
 		$totalQuestions = count($questions);

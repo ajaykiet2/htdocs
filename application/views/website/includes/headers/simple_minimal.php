@@ -56,7 +56,7 @@
 						<div class="header-navigation">
 							<div class="nav-main-wrapper">
 								<div class="nav-main-title visible-xs">
-									<a href="index.html">
+									<a href="/">
 										<img src="/assets/img/hrdlogo.jpg" alt="HRD Foundation - India">
 										HRD
 									</a>

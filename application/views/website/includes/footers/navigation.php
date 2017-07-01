@@ -70,10 +70,7 @@
 			$('body').loading("hide");
 		});
 	});
-	$("img").each(function(){
-		$(this).addClass("img-responsive");
-		// $(this).prop('style',"");
-	});
+	
 	$('.carousel').carousel({
 		interval: 3000
 	})
