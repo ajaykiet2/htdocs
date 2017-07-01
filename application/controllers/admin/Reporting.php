@@ -75,3 +75,4 @@ class Reporting extends CI_Controller {
 		force_download($output_file_excel, null);
     }
 }
+
