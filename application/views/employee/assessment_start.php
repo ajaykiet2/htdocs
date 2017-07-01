@@ -22,19 +22,19 @@
 				<h5><?=$qstnCount;?>. <?=$question->question;?><i class="statusIcon fa-2x fa pull-right"></i></h5>
 			</div>
 			<div class="faq-item-answer ">
-				<span class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+				<span class="col-sm-12 col-xs-12">
 					<input type="radio" name="answer_<?=$question->assessmentQuestionID;?>" class="option_1" value="<?=$question->option_1;?>"> <?=$question->option_1;?>
 				</span>
-				<span class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+				<span class="col-sm-12 col-xs-12">
 					<input type="radio" name="answer_<?=$question->assessmentQuestionID;?>" class="option_2" value="<?=$question->option_2;?>"> <?=$question->option_2;?>
 				</span>
 				<?php if(!empty($question->option_3)):?>
-				<span class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+				<span class="col-sm-12 col-xs-12">
 					<input type="radio" name="answer_<?=$question->assessmentQuestionID;?>" class="option_3" value="<?=$question->option_3;?>"> <?=$question->option_3;?>
 				</span>
 				<?php endif;?>
 				<?php if(!empty($question->option_4)):?>
-				<span class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+				<span class="col-sm-12 col-xs-12">
 					<input type="radio" name="answer_<?=$question->assessmentQuestionID;?>" class="option_4" value="<?=$question->option_4;?>"> <?=$question->option_4;?>
 				</span>
 				<?php endif;?>
@@ -68,7 +68,7 @@ $(document).ready(function(){
 		minutes : <?=$assessment->duration;?>,
 		size : "lg",                
 		timeUp : timeIsUp,
-		beforeExpiryTime : "00:00:01:05",
+		beforeExpiryTime : "00:00:01:00",
 		beforeExpiryTimeFunction :  notifyUser
 	});
 	
@@ -90,20 +90,9 @@ $(document).ready(function(){
 			}
 		});
 	}
-	function notifyUser() {
-		
+	function notifyUser(){
+		$.notify("1 MINUTE REAMINING",{position:"right middle"});
 	}
-	
-	
-	window.request = '';
-	window.onbeforeunload = function(e) {
-	  window.request = $("#question_form").serialize();
-	  return "Saving the values";
-	};
-	
-	window.unload = function(){
-		$.post("/employee/assessment/submit/?"+window.request, function(data){});
-	};
 	
 });
 </script>
