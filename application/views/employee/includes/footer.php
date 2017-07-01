@@ -17,6 +17,5 @@
         </div>
     </div>
 	<?php $this->load->view("employee/includes/scripts");?>
-		
 </body>
 </html>

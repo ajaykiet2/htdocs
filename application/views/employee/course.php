@@ -12,6 +12,7 @@
 				<ul>
 					<li>Duration: <a href="javascript:void(0)"><?=timeToDecimal($course->duration);?> Hours</a></li>
 					<li>Time Spent: <a href="javascript:void(0)"><?=$course->timeSpent;?></a></li>
+					<li>Expired In: <a href="javascript:void(0)"><?=($course->maxDays - daysFromToday($course->timeStamp));?> Days</a></li>
 				</ul>
 			</div>
 			<span class="pull-right">

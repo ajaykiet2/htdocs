@@ -18,4 +18,9 @@
 <script type="text/javascript" src="/assets/libraries/pace/pace.min.js"></script>
 <script type="text/javascript" src="/assets/js/hrd-foundation-admin.js"></script>
 <script type="text/javascript" src="/assets/js/employee/employee.js"></script>
+<script>
+jQuery(document).bind("contextmenu cut copy selectstart",function(e){
+    e.preventDefault(); return false;
+});
+</script>
 
