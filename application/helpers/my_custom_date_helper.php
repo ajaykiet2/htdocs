@@ -49,26 +49,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 // ------------------------------------------------------------------------
 
-function timeToDecimal($time){
-   list($hour,$min, $sec) = explode(":",$time);
-   return round((float)($hour + ($min / 60)),2);
-}
+	function timeToDecimal($time){
+	   list($hour,$min, $sec) = explode(":",$time);
+	   return round((float)($hour + ($min / 60)),2);
+	}
 
-function decimalToTime($dec){
-    $seconds = ($dec * 3600);
-    $hours = floor($dec);
-    $seconds -= $hours * 3600;
-    $minutes = floor($seconds / 60);
-    $seconds -= $minutes * 60;
-    return lz($hours).":".lz($minutes).":".lz($seconds);
-}
+	function decimalToTime($dec){
+		$seconds = ($dec * 3600);
+		$hours = floor($dec);
+		$seconds -= $hours * 3600;
+		$minutes = floor($seconds / 60);
+		$seconds -= $minutes * 60;
+		return lz($hours).":".lz($minutes).":".lz($seconds);
+	}
 
-function lz($num){
-    return (strlen($num) < 2) ? "0{$num}" : $num;
-}	
-	
-	
-	
+	function lz($num){
+		return (strlen($num) < 2) ? "0{$num}" : $num;
+	}	
 	
 	function today($format = 'd/m/Y'){
 		date_default_timezone_set("Asia/Kolkata");
@@ -140,17 +137,21 @@ function lz($num){
 	}
 	function daysFromToday($date){
 		date_default_timezone_set("Asia/Kolkata");
-		$today = date_create($this->todayDateStamp());
-		$date = date_create($this->DateToDateStamp($date));
-		$diff = date_diff($today,$date);
+		$today = date_create(todayDateStamp());
+		$date = date_create(DateToDateStamp($date));
+		$diff = date_diff($date,$today);
 		return $diff->format("%R%a");
+	}
+	function dateDiff ($d1, $d2) {
+		date_default_timezone_set("Asia/Kolkata");
+		return round(abs(strtotime($d1)-strtotime($d2))/86400);
 	}
 	function daysBetweenDates($date1,$date2){
 		date_default_timezone_set("Asia/Kolkata");
-		$date1 = date_create($this->DateToDateStamp($date1));
-		$date2 = date_create($this->DateToDateStamp($date2));
+		$date1 = date_create(DateToDateStamp($date1));
+		$date2 = date_create(DateToDateStamp($date2));
 		$diff = date_diff($date1,$date2);
-		return $diff->format("%R%a");
+		return $diff->format("%a");
 	}
 	function secondsBetweenTime($time1,$time2){	
 	    date_default_timezone_set("Asia/Kolkata");

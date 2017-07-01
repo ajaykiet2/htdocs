@@ -225,16 +225,22 @@ class Employee extends CI_Model{
 		return true;
 	}
 	
-	public function getCourse($employeeID){
+	public function getCourse($employeeID, $courseID = null){
 		$this->db->select("course.*, employeecourse.*, department.name as departmentName")
-				->from("employeecourse")
-				->join("course","employeecourse.courseID = course.courseID")
-				->join("department","department.departmentID = course.departmentID")
-				->join("companycourse", "companycourse.courseID = course.courseID")
-				->join("employee", "employee.companyID = companycourse.companyID")
-				->where("employee.departmentID = course.departmentID")
-				->where("employeecourse.employeeID", $employeeID)
-				->where("employee.employeeID", $employeeID);
+			->from("employeecourse")
+			->join("course","employeecourse.courseID = course.courseID")
+			->join("department","department.departmentID = course.departmentID")
+			->join("companycourse", "companycourse.courseID = course.courseID")
+			->join("employee", "employee.companyID = companycourse.companyID")
+			->where("employee.departmentID = course.departmentID")
+			->where("employeecourse.employeeID", $employeeID)
+			->where("employee.employeeID", $employeeID);
+			
+			if($courseID != null){
+				$this->db->where("course.courseID", $courseID);
+				$courses = $this->db->get();
+				return ($courses->num_rows() > 0) ? $courses->result()[0] : null;
+			}
 				
 		$courses = $this->db->get();
 		return ($courses->num_rows() > 0) ? $courses->result() : null;
@@ -281,6 +287,18 @@ class Employee extends CI_Model{
 	
 	private function _assignCourse($employeeID, $courseID){
 		return $this->db->insert("employeecourse",array('employeeID' => $employeeID, 'courseID'=> $courseID));
+	}
+	
+	public function isCourseAvailable($courseID){
+		$rs = $this->db->get_where('course',array('courseID' => $courseID));
+		if($rs->num_rows() > 0){
+			$courseInfo = $rs->result()[0];
+			$employeeCourse = $this->loadCourse($courseID);
+			if(empty($employeeCourse)) return false;
+			if(daysFromToday($employeeCourse->timeStamp) <= $courseInfo->maxDays){return true;}else{return false;}
+		}else{
+			return false;
+		}
 	}
 	
 	public function forgotPassword($email){

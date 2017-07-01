@@ -15,7 +15,7 @@
 				</ul>
 			</div>
 			<span class="pull-right">
-				<?php if($course->eligiblity === 'yes'):?>
+				<?php if($course->eligiblity === 'yes' && $course->isAvailable):?>
 					<a href="/employee/assessment/<?=$this->encrypt->encode($course->courseID);?>" title="Start Examination">
 						<i class="btn btn-xs fa fa-paper-plane"></i>
 					</a>
@@ -23,11 +23,17 @@
 					<a href="javascript:void(0)" class="viewCourse" title="Not Eligible For Examination">
 						<i class="btn btn-xs fa fa-times-circle"></i>
 					</a>
-				<?php endif;?>
-					
+				<?php endif;
+					if($course->isAvailable):
+				?>
 				<a href="/employee/course/<?=$this->encrypt->encode($course->courseID);?>" class="viewCourse" title="Open This Course">
 					<i class="btn-secondary btn-xs fa fa-long-arrow-right"></i>
 				</a> 
+				<?php else:?>
+				<a href="javascript:void(0)" class="viewCourse" title="This course is expired for your account">
+					<i class="btn-secondary btn-xs fa fa-times-circle"></i>
+				</a>
+				<?php endif;?>
 			</span>
 		</div>
 	</div><!-- /.col-* -->

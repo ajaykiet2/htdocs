@@ -8,7 +8,7 @@ class Portal extends CI_Controller {
 		#calling parent controller
 		parent::__construct();
 		$this->db->cache_delete_all();
-		$this->load->model(array('employee','faq','gallery', 'course','accreditation','chepter','assessment','slide'));
+		$this->load->model(array('employee','faq', 'course','accreditation','chepter','assessment','slide'));
 		#loading other modules
 		#--------------
 		if(!$this->_isEmployee()){
@@ -28,10 +28,16 @@ class Portal extends CI_Controller {
 	#default function
 	public function index(){		
 		$env = $this->environment->load('employee');
+		$courses = $this->employee->getCourse($env['loggedInEmployee']->employeeID);
+		$empCourses = array();
+		foreach($courses as $course){
+			$course->isAvailable = $this->employee->isCourseAvailable($course->courseID);
+			array_push($empCourses, $course);
+		}
 		$data = array(
 			'env' => $env,
 			'employee' => $this->employee->load($env['loggedInEmployee']->employeeID),
-			'courses' => $this->employee->getCourse($env['loggedInEmployee']->employeeID),
+			'courses' => $empCourses,
 		);	
 		$this->viewPage('employee/course', $data);
 	}
@@ -65,28 +71,18 @@ class Portal extends CI_Controller {
 		
 	}
 	
-	public function course(){
-		
-		$env = $this->environment->load('employee');
-		$data = array(
-			'env' => $env,
-			'courses' => $this->employee->getCourse($env['loggedInEmployee']->employeeID),
-		);	
-		$this->viewPage('employee/course', $data);
-		
-	}
-	
 	public function courseDetail(){
 		$courseID = $this->encrypt->decode($this->uri->segment(3));
-		
-		$course = $this->course->getInfo($courseID);
+		$env = $this->environment->load('employee');
+		$course = $this->employee->getCourse($env['loggedInEmployee']->employeeID,$courseID);
 		$chepters = $this->course->getChepters($courseID);
 		
-		$data['env'] =  $this->environment->load('employee');
+		$data['env'] =  $env;
 		$data['courseInfo'] =  $course;
 		$data['chepters'] =  $chepters;
 		
-		if(!empty($course)){
+		if(!empty($course) && $this->employee->isCourseAvailable($courseID)){
+			$course->remainingDays = $course->maxDays - daysFromToday($course->timeStamp);
 			$this->viewPage('employee/course_detail', $data);
 		}else{
 			$this->viewPage('employee/error404', $data);
@@ -99,7 +95,7 @@ class Portal extends CI_Controller {
 		
 		$data['env'] = $this->environment->load('employee');
 		$data['chepterInfo'] = $this->chepter->load($courseID, $chepterID);
-		if(!empty($data['chepterInfo'])){
+		if(!empty($data['chepterInfo']) && $this->employee->isCourseAvailable($courseID)){
 			$data['slides'] = $this->chepter->getSlides($chepterID);
 			$data['questions'] = $this->chepter->getQuestions($chepterID);
 			if(!empty($data['slides'])){
@@ -136,8 +132,6 @@ class Portal extends CI_Controller {
 		$dataToUpdate = array();
 		
 		$secs = strtotime(getCurrentTimeStamp())-strtotime($startTime);
-		$spentSeconds = strtotime($empCourse->timeSpent)+$secs;
-		$totalDuration = strtotime($mainCourse->duration);
 	
 		$timeSpent = date("H:i:s",strtotime($empCourse->timeSpent)+$secs);
 		if(timeToDecimal($timeSpent) >= 15){
@@ -182,28 +176,31 @@ class Portal extends CI_Controller {
 		$employeeID = $this->session->employeeID;
 		$assessmentID = $this->encrypt->decode($this->uri->segment(4));
 		
-		$assessment = $this->assessment->get(array(
-			'assessmentID' => $assessmentID,
-		));
-		
-		$questionSet = rand(1,$assessment->questionSets);
-		$questions = $this->assessment->getQuestionSet($assessmentID, $questionSet);
-		
 		$data['env'] = $this->environment->load('employee');
 		$data['employeeInfo'] = $this->employee->getInfo($employeeID);
-		$data['assessment'] = $assessment;
-		$data['questions'] = $this->assessment->getQuestionSet($assessmentID, $questionSet);
 		
-		if(!empty($data['questions'])){
-			$this->session->set_userdata(array(
-				"assessmentID" => $assessmentID,
-				"startedAt"	=> getCurrentTimeStamp(),
-			));
+		$assessment = $this->assessment->get(array('assessmentID' => $assessmentID));
+		if(!empty($assessment)){
+			$questionSet = rand(1,$assessment->questionSets);
+			$questions = $this->assessment->getQuestionSet($assessmentID, $questionSet);
 			
-			$this->viewPage('employee/assessment_start', $data);
+			
+			$data['assessment'] = $assessment;
+			$data['questions'] = $questions;
+			
+			if(!empty($data['questions'])){
+				$this->session->set_userdata(array(
+					"assessmentID" => $assessmentID,
+					"startedAt"	=> getCurrentTimeStamp(),
+				));
+				
+				$this->viewPage('employee/assessment_start', $data);
+			}else{
+				$this->viewPage('employee/error404', $data);
+			}	
 		}else{
 			$this->viewPage('employee/error404', $data);
-		}	
+		}
 	}
 	
 	public function submitAssessment(){

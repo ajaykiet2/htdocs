@@ -40,7 +40,7 @@
 	<div class="col-sm-6 col-md-3 col-xs-12">
         <div class="module">
             <div class="module-info center vertical-align">
-                Duration 
+                Duration / Day 
             </div><!-- /.module-info -->
 
             <div class="module-content vertical-align">
@@ -51,11 +51,11 @@
 	<div class="col-sm-6 col-md-3 col-xs-12">
         <div class="module">
             <div class="module-info center vertical-align">
-                Max Days Allowed 
+               Remaining Days 
             </div><!-- /.module-info -->
 
             <div class="module-content vertical-align">
-                <span><?=strtoupper($courseInfo->maxDays);?></span>
+                <span><?=strtoupper($courseInfo->remainingDays);?></span>
             </div><!-- /.module-content -->
         </div><!--- /.module -->
     </div>

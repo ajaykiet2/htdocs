@@ -10,7 +10,7 @@
 								<li class="col-md-4 col-xs-6 text-right">NAME</li>
 								<li class="col-md-8 col-xs-6"><?=$employeeInfo->name;?></li>
 								<div class="clearfix"></div>
-								<li class="col-md-4 col-xs-6 text-right">AADHAAR CARD</li>
+								<li class="col-md-4 col-xs-6 text-right">AADHAAR NO</li>
 								<li class="col-md-8 col-xs-6"><?=$employeeInfo->aadharCard;?></li>
 								<div class="clearfix"></div>
 								<li class="col-md-4 col-xs-6 text-right">COMPANY</li>
