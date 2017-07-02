@@ -83,17 +83,6 @@
 			</div><!-- /.admin-navigation-inner -->
 		</div><!-- /.admin-navigation -->
         <div class="admin-content">
-			
-			<div class="admin-content-image-text">
-				<h1>Welcome in Realsite backend</h1>
-				<h2>Please click on login to continue, no password required.</h2>
-			</div>
-			<div class="admin-content-image-call-to-action">
-				<i class="fa fa-long-arrow-left"></i>
-				<br>
-				<span>Click on "Login" to see what's here.</span>
-			</div>
-			
             <div class="admin-content-inner">
                 <div class="admin-content-header">
                     <div class="admin-content-header-inner">

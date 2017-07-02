@@ -127,6 +127,7 @@ $route['employee/dashboard'] = 'employee/portal';        						    #
 $route['employee/glossary'] = 'employee/portal/glossary';							#
 $route['employee/account'] = 'employee/portal/account';  							#
 
+$route['employee/guidlines'] = 'employee/portal/guidlines';			  							#
 $route['employee/faq'] = 'employee/portal/faq';			  							#
 $route['employee/faq/(:num)'] = 'employee/portal/faq';								#
 

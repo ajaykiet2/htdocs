@@ -8,7 +8,7 @@ class Portal extends CI_Controller {
 		#calling parent controller
 		parent::__construct();
 		$this->db->cache_delete_all();
-		$this->load->model(array('employee','faq', 'course','accreditation','chepter','assessment','slide'));
+		$this->load->model(array('employee','faq', 'guidline', 'course','accreditation','chepter','assessment','slide'));
 		#loading other modules
 		#--------------
 		if(!$this->_isEmployee()){
@@ -40,6 +40,16 @@ class Portal extends CI_Controller {
 			'courses' => $empCourses,
 		);	
 		$this->viewPage('employee/course', $data);
+	}
+	
+	#Function to fetch guidlines
+	public function guidlines(){
+		$guidlines = $this->guidline->getAll();
+		$data = array(
+			"env" => $this->environment->load('employee'),
+			'guidlines' => $guidlines,
+		);
+		$this->viewPage('employee/guidlines', $data);
 	}
 	
 	#function for frequently asked question
