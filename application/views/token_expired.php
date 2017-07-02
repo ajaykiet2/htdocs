@@ -1,15 +1,16 @@
 <?php $this->load->view('website/includes/headers/simple_minimal');?>
 
+
 <div class="container">
             <div class="content">
                 <div class="not-found">
 			<div class="not-found-title text-center">
-				<strong>404</strong> <span class="important">Page not found</span>
+				<strong>401</strong> <span class="important">Access Denied!</span>
 			</div>
 
 			<div class="not-found-content">
 				<h4 class="not-found-subtitle text-center">
-					SORRY! YOU ARE TRYING TO ACCESS WRONG INFO...
+					<?=strtoupper($response->message);?>
 				</h4>
 					<center><a href="/" class="btn"><i class="fa fa-long-arrow-left"></i>Back to home</a></center>
 			</div><!-- /.not-found-content -->

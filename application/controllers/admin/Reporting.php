@@ -67,8 +67,7 @@ class Reporting extends CI_Controller {
 		);
        
 		// define output directoy 
-		$output_file_dir = getcwd()."/tmp/";
-      
+		$output_file_dir = getcwd()."/uploads/temp/";
  
 		$output_file_excel = $output_file_dir  . "CandidateReport.xlsx";
 		//download excel sheet with data in /tmp folder

@@ -90,14 +90,10 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 defined('EMAIL_CONFIG')      
 
 OR define('EMAIL_CONFIG', Array(
-  'protocol' => 'SMTP',
-  'smtp_host' => 'ssl://mail.gmail.com',
-  'smtp_port' => 465,
-  'smtp_user' => 'ajaykiet2@gmail.com',
-  'smtp_pass' => 'Ajay@kiet2',
+  'protocol' => 'mail',
+  'mailpath' => '/usr/sbin/sendmail',
   'mailtype' => 'html',
   'charset' => 'iso-8859-1',
   'wordwrap' => TRUE,
-  'newline'	=> "\r\n"
 )); 
 

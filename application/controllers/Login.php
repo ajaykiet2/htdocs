@@ -95,8 +95,11 @@ class Login extends CI_Controller {
 						'logo'	=> "http://plapeo.com/assets/img/hrdlogo.jpg"
 					);
 					
-					$this->load->library('email',EMAIL_CONFIG);
-					$this->email->from('admin@bricksadvisors.com', 'Ajay Kumar');
+					$this->load->library('email');
+					$this->email->initialize(EMAIL_CONFIG);
+					
+					$this->email->set_newline("\r\n");
+					$this->email->from('ajaykiet2@gmail.com', 'Ajay Kumar');
 					$this->email->to($emailID);
 					$this->email->subject('Password Reset Request');
 					$body = $this->load->view("email/password_reset",$data,true);
@@ -141,6 +144,7 @@ class Login extends CI_Controller {
 		$this->form_validation->set_error_delimiters('', '');
 		$this->form_validation->set_rules("token", "Token", "required");
 		$data = array("response" => null);
+		$data['env'] = $this->environment->load();
 		if($this->input->is_ajax_request()){	
 			$this->form_validation->set_rules("password", "Password", "trim|required|min_length[8]|max_length[15]");
 			$this->form_validation->set_rules("re_password", "Repeat Password", "trim|required|matches[password]");

@@ -70,7 +70,8 @@ class Environment extends CI_Model{
 	# Creating Menus
 	private function _createMenus(){
 		
-		$menus = array("ABOUT", "COURSES", "GALLERY", "FAQ", "GUIDLINES", "CONTACT", "LOGIN");
+		// $menus = array("ABOUT", "COURSES", "GALLERY", "FAQ", "GUIDLINES", "CONTACT", "LOGIN");
+		$menus = array("ABOUT", "COURSES", "GALLERY", "GUIDLINES", "CONTACT", "LOGIN");
 		$currentPage = strtoupper($this->uri->segment(1));
 		
 		$created = array();
