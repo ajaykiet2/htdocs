@@ -20,7 +20,7 @@ class Ajax extends CI_Controller {
 			'slide',
 			'assessment',
 			'report',
-			'guidline'
+			'guideline'
 		));
 		#loading other modules
 		#--------------
@@ -659,13 +659,13 @@ class Ajax extends CI_Controller {
 	
 	#=====================================================
 	#Guidline Action Start
-	public function guidlineAction(){
+	public function guidelineAction(){
 		$action = $this->input->post("action");
 		switch($action){
 			case "new":
 				$this->form_validation->set_error_delimiters('', '');
-				$this->form_validation->set_rules("title", "Guidline Title", "trim|required");
-				$this->form_validation->set_rules("content", "Slide Content", "trim|required");
+				$this->form_validation->set_rules("title", "Guideline Title", "trim|required");
+				$this->form_validation->set_rules("content", "Guideline Content", "trim|required");
 				if($this->form_validation->run() == FALSE){
 					echo json_encode( array(
 						'status' => false,
@@ -679,23 +679,23 @@ class Ajax extends CI_Controller {
 						'content' => $_POST["content"],
 					);
 					
-					if($this->guidline->add($inputs)){
+					if($this->guideline->add($inputs)){
 						echo json_encode( array(
 							'status' => true,
-							'message' => "Guidline Saved Successfully!"
+							'message' => "Guideline Saved Successfully!"
 						));
 					}else{
 						echo json_encode( array(
 							'status' => false,
-							'message' => "Unable to save guidline!"
+							'message' => "Unable to save guideline!"
 						));
 					}
 				}
 			break;
 			case "edit":
 				$this->form_validation->set_error_delimiters('', '');
-				$this->form_validation->set_rules("title", "Guidline Title", "trim|required");
-				$this->form_validation->set_rules("content", "Guidline Content", "required");
+				$this->form_validation->set_rules("title", "Guideline Title", "trim|required");
+				$this->form_validation->set_rules("content", "Guideline Content", "required");
 				if($this->form_validation->run() == FALSE){
 					echo json_encode( array(
 						'status' => false,
@@ -703,15 +703,15 @@ class Ajax extends CI_Controller {
 					));
 					return;
 				}else{
-					$guidlineID =  $this->input->post("guidlineID");
+					$guidelineID =  $this->input->post("guidlineID");
 					$inputs = array(
 						'title' => $this->input->post("title"),
 						'content' => $_POST["content"]
 					);
-					if($this->guidline->update($guidlineID, $inputs)){
+					if($this->guideline->update($guidelineID, $inputs)){
 						echo json_encode( array(
 							'status' => true,
-							'message' => "Guidline Updated Successfully!"
+							'message' => "Guideline Updated Successfully!"
 						));
 					}else{
 						echo json_encode( array(
@@ -722,11 +722,11 @@ class Ajax extends CI_Controller {
 				}
 			break;
 			case "delete":
-				$guidlineID =  $this->input->post("guidlineID");
-				if($this->guidline->delete($guidlineID)){
+				$guidelineID =  $this->input->post("guidlineID");
+				if($this->guideline->delete($guidelineID)){
 						echo json_encode( array(
 							'status' => true,
-							'message' => "Guidline Deleted Successfully!"
+							'message' => "Guideline Deleted Successfully!"
 						));
 					}else{
 						echo json_encode( array(

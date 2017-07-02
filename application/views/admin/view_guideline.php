@@ -1,8 +1,8 @@
 <?php $this->load->view("admin/includes/header");?>
-<h2 class="page-header">GUIDLINE DETAIL
+<h2 class="page-header">GUIDELINE DETAIL
 	<p class="pull-right">
-		<a href="/admin/configurations/guidlines" title="Back To Guidline Listing"><i class="btn fa fa-long-arrow-left"></i></a>  
-		<a href="/admin/configurations/guidlines/edit/<?=$this->encrypt->encode($guidline->guidlineID);?>" title="Update This Guidline"><i class="btn-secondary fa fa-pencil"></i></a>  
+		<a href="/admin/configurations/guidelines" title="Back To Guideline Listing"><i class="btn fa fa-long-arrow-left"></i></a>  
+		<a href="/admin/configurations/guidelines/edit/<?=$this->encrypt->encode($guideline->guidlineID);?>" title="Update This Guideline"><i class="btn-secondary fa fa-pencil"></i></a>  
 	</p>
 </h2>
 <div class="row">
@@ -12,14 +12,14 @@
                 Title: 
             </div>
             <div class="module-content vertical-align">
-                <span><?=strtoupper($guidline->title);?></span>
+                <span><?=strtoupper($guideline->title);?></span>
             </div>
         </div>
     </div>
 </div>
 
 <div class="box fr-view" id="slide-content">
-	<?=$guidline->content;?>
+	<?=$guideline->content;?>
 </div>
 
 <?php $this->load->view("admin/includes/scripts");?>

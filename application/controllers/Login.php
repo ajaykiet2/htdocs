@@ -92,7 +92,7 @@ class Login extends CI_Controller {
 						'user' => "Ajay Kumar",
 						"emailID" => $emailID,
 						"token" => $token,
-						'logo'	=> "http://plapeo.com/assets/img/hrdlogo.jpg"
+						'logo'	=> base_url('assets/img/hrdlogo.jpg'),
 					);
 					
 					$config = array(

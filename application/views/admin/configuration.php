@@ -26,9 +26,9 @@
 			</div><!-- /.gallery-item -->
 		</div>
 		<div class="col-lg-1 col-md-2 col-sm-3 col-xs-4">
-			<div class="gallery-item"  data-rel="tooltip" title="Manage Guidlines">
+			<div class="gallery-item"  data-rel="tooltip" title="Manage Guidelines">
 				<div class="gallery-image">
-					<a href="/admin/configurations/guidlines">
+					<a href="/admin/configurations/guidelines">
 						<img src="/assets/img/icons/guideline.png" alt="" class="img img-responsive" >
 					</a>
 				</div><!-- /.gallery-image -->

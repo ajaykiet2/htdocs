@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 # This module will oprate the actions on FAQ
 #==========================================
 
-class Guidline extends CI_Model{
+class Guideline extends CI_Model{
 	
 	public function __construct(){
 		parent::__construct();

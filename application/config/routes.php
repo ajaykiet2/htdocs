@@ -38,7 +38,7 @@ $route['default_controller'] = 'website';						 #
 $route['about'] = 'website';                                     #
 $route['faq'] = 'website/faq';                                   #
 $route['faq/(:num)'] = 'website/faq';                            #
-$route['guidlines'] = 'website/guidlines';                            #
+$route['guidelines'] = 'website/guidelines';                            #
 $route['courses'] = 'website/course';                            #
 $route['courses/page'] = 'website/course';                       #
 $route['courses/page/(:num)'] = 'website/course';                #
@@ -93,17 +93,17 @@ $route['admin/configurations/gallery'] = 'admin/portal/configurations';         
 $route['admin/configurations/faq'] = 'admin/portal/configurations/';                    #             
 $route['admin/configurations/accreditation'] = 'admin/portal/configurations';	        #
 $route['admin/configurations/mocktest'] = 'admin/portal/configurations';                #
-$route['admin/configurations/guidlines'] = 'admin/portal/configurations';                #
+$route['admin/configurations/guidelines'] = 'admin/portal/configurations';              #
                                                                                         #
                                                                                         #
 $route['admin/assessment'] = 'admin/portal/assessment';                                 #
 $route['admin/assessment/detail'] = 'admin/portal/assessmentDetail';                    #
 $route['admin/ajax/assessmentAction'] = 'admin/ajax/assessmentAction'; 
 
-$route['admin/ajax/guidlineAction'] = 'admin/ajax/guidlineAction';
-$route['admin/configurations/guidlines/new'] = 'admin/portal/guidline';
-$route['admin/configurations/guidlines/edit/(:any)'] = 'admin/portal/guidline';
-$route['admin/configurations/guidlines/view/(:any)'] = 'admin/portal/guidline';
+$route['admin/ajax/guidelineAction'] = 'admin/ajax/guidelineAction';
+$route['admin/configurations/guidelines/new'] = 'admin/portal/guideline';
+$route['admin/configurations/guidelines/edit/(:any)'] = 'admin/portal/guideline';
+$route['admin/configurations/guidelines/view/(:any)'] = 'admin/portal/guideline';
 																						#
 $route['admin/upload/chepterQuestion'] = 'admin/upload/chepterQuestion';                #
 $route['admin/upload/assessmentQuestion'] = 'admin/upload/assessmentQuestion';          #
@@ -127,7 +127,7 @@ $route['employee/dashboard'] = 'employee/portal';        						    #
 $route['employee/glossary'] = 'employee/portal/glossary';							#
 $route['employee/account'] = 'employee/portal/account';  							#
 
-$route['employee/guidlines'] = 'employee/portal/guidlines';			  							#
+$route['employee/guidelines'] = 'employee/portal/guidelines';			  							#
 $route['employee/faq'] = 'employee/portal/faq';			  							#
 $route['employee/faq/(:num)'] = 'employee/portal/faq';								#
 

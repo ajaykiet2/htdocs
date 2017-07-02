@@ -2,7 +2,7 @@ $(document).ready(function(){
 	$.guidline = function(){
 		$self = this;
 		this.actionMode = '';
-		this.url = '/admin/ajax/guidlineAction/'
+		this.url = '/admin/ajax/guidelineAction/'
 		this.delete = function(guidlineID){
 			var request = "&action=delete&guidlineID="+guidlineID;
 		

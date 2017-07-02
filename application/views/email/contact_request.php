@@ -17,9 +17,11 @@
 	<b>Mobile:</b> <?=$contact_mobile;?><br>
 	<b>Email:</b> <?=$contact_email;?><br>
 	<b>Message:</b> <?=$contact_message;?><br><br>
+	<b>Message:</b> <?=$logo;?><br><br>
 	<small>Please take a look and respond accordingly.</small><br><br><br>
+	<img src="<?=$logo;?>" height="70px;" width="auto"/><br>
 	Regards,<br>
-	HRD ADMIN.
+	HRD Portal.
 	
 </p>
 </div>

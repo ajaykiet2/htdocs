@@ -8,7 +8,7 @@ class Website extends CI_Controller {
 		#calling parent controller
 		parent::__construct();
 		
-		$this->load->model(array('faq','gallery', 'course','accreditation','guidline'));
+		$this->load->model(array('faq','gallery', 'course','accreditation','guideline'));
 		#loading other modules
 		#--------------
 	}
@@ -55,13 +55,13 @@ class Website extends CI_Controller {
 		
 	}
 	
-	public function guidlines(){
-		$guidlines = $this->guidline->getAll();
+	public function guidelines(){
+		$guidlines = $this->guideline->getAll();
 		$data = array(
 			"env" => $this->environment->load(),
-			'guidlines' => $guidlines,
+			'guidelines' => $guidlines,
 		);
-		$this->load->view('website/guidlines',$data);
+		$this->load->view('website/guidelines',$data);
 	}
 	
 	#function for frequently asked question
@@ -198,10 +198,12 @@ class Website extends CI_Controller {
 				"contact_mobile" => $this->input->post("mobile"),
 				"contact_email" => $this->input->post("email"),
 				"contact_message" => $this->input->post("message"),
+				'logo'	=> base_url('assets/img/hrdlogo.jpg'),
 				"user" => "Ajay Kumar"
 			);
 			
 			$response = array();
+			
 			$config = array(
 			  'protocol' => 'mail',
 			  'mailpath' => '/usr/sbin/sendmail',
@@ -213,9 +215,9 @@ class Website extends CI_Controller {
 			$this->email->initialize($config);
 			$this->email->set_newline("\r\n");
 			
-			$this->email->from('admin@hrdfi.com', 'HRD Foundation');
-			$this->email->to('hrdfi@vsnl.com');
-			$this->email->subject('Enquiry Request');
+			$this->email->from('portal@hrdfi.com', 'HRD Foundation');
+			$this->email->to('ajaykiet2@gmail.com');
+			$this->email->subject('Contact Request');
 			$body = $this->load->view("email/contact_request",$data,true);
 			$this->email->message($body);
 			if (!$this->email->send()) {

@@ -1,36 +1,36 @@
 <?php $this->load->view("admin/includes/header");?>
-<h1 class="page-header">GUIDLINES <span style="color:#999;">(<?=count($guidlines);?>)</span>
+<h1 class="page-header">GUIDELINES <span style="color:#999;">(<?=count($guidelines);?>)</span>
 	<p class="pull-right">	
-		<a href="/admin/configurations/guidlines/new" title="Add New Guidline"><i class="btn-secondary fa fa-plus"></i></a> 
+		<a href="/admin/configurations/guidelines/new" title="Add New Guidline"><i class="btn-secondary fa fa-plus"></i></a> 
 	</p>
 </h1>
-<?php if(!empty($guidlines)):?>
+<?php if(!empty($guidelines)):?>
 <table class="table table-simple" id="guidline-table">
 	<thead>
 		<tr>
 			<th class="min-width nowrap"></th>
 			<th>ID</th>
-			<th>Guidline Title</th>
+			<th>Guideline Title</th>
 			<th>Added Date</th>
 			<th class="min-width nowrap">Action</th>
 		</tr>
 	</thead>
 	<tbody>
-	<?php foreach($guidlines as $guidline):?>
+	<?php foreach($guidelines as $guideline):?>
 		<tr>
 			<td class="min-width nowrap"></td>
 			<td>
-				<a href="#"><?=$guidline->guidlineID;?></a>
+				<a href="#"><?=$guideline->guidlineID;?></a>
 			</td>
 			<td>
-				<a href="/admin/configurations/guidlines/view/<?=$this->encrypt->encode($guidline->guidlineID);?>"><?=$guidline->title;?></a>
+				<a href="/admin/configurations/guidelines/view/<?=$this->encrypt->encode($guideline->guidlineID);?>"><?=$guideline->title;?></a>
 			</td>
-			<td><?=dateTimeToString($guidline->timeStamp);?></td>
+			<td><?=dateTimeToString($guideline->timeStamp);?></td>
 			
 			<td class="min-width nowrap">
-				<a class="btn-xs btn-secondary fa fa-edit" href="/admin/configurations/guidlines/edit/<?=$this->encrypt->encode($guidline->guidlineID);?>" title="Edit Guidline"></a>
-				<a class="btn-secondary btn-xs fa fa-eye" href="/admin/configurations/guidlines/view/<?=$this->encrypt->encode($guidline->guidlineID);?>" title="View Guidline"></a>
-				<span class="btn btn-xs fa fa-trash delete-guidline" data-id="<?=$guidline->guidlineID;?>" title="Delete Guidline"></span>
+				<a class="btn-xs btn-secondary fa fa-edit" href="/admin/configurations/guidelines/edit/<?=$this->encrypt->encode($guideline->guidlineID);?>" title="Edit Guideline"></a>
+				<a class="btn-secondary btn-xs fa fa-eye" href="/admin/configurations/guidelines/view/<?=$this->encrypt->encode($guideline->guidlineID);?>" title="View Guideline"></a>
+				<span class="btn btn-xs fa fa-trash delete-guidline" data-id="<?=$guideline->guidlineID;?>" title="Delete Guideline"></span>
 			</td>
 		</tr>
 		<?php endforeach;?>
@@ -44,7 +44,7 @@
 				<i class="fa fa-warning"></i>
 			</div><!-- /.icon -->
 			<div class="content">
-				NO GUIDLINE AVAILABLE </span>.
+				NO GUIDELINE AVAILABLE </span>.
 			</div><!-- /.content -->
 		</li>
 	</ul>

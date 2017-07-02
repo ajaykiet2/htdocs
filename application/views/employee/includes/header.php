@@ -67,7 +67,7 @@
 							</div>
                             <div class="admin-content-header-menu">
                                 <ul class="admin-content-header-menu-inner collapse">
-                                    <li><a href="/employee/guidlines">Guidlines</a></li>
+                                    <li><a href="/employee/guidelines">Guidelines</a></li>
                                     <li><a href="/employee/logout">Logout</a></li>
                                 </ul>
                                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".admin-content-header-menu-inner">

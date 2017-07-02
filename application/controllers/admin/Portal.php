@@ -22,7 +22,7 @@ class Portal extends CI_Controller {
 			'chepter',
 			'slide',
 			'assessment',
-			'guidline'
+			'guideline'
 		));
 		
 		if(!$this->_isAdmin()){
@@ -244,7 +244,7 @@ class Portal extends CI_Controller {
 	
 	#==============================================================
 	# slides action start
-	public function guidline(){
+	public function guideline(){
 		
 		$action = $this->uri->segment(4);
 		#==================================================
@@ -256,21 +256,21 @@ class Portal extends CI_Controller {
 				$this->load->view('admin/new_guidline',$data);
 			break;
 			case "edit":
-				$guidlineID = $this->encrypt->decode($this->uri->segment(5));
+				$guidelineID = $this->encrypt->decode($this->uri->segment(5));
 				
-				$data['guidline'] = $this->guidline->load($guidlineID);
-				if(!empty($data['guidline'])){
-					$this->load->view('admin/new_guidline', $data);
+				$data['guideline'] = $this->guideline->load($guidelineID);
+				if(!empty($data['guideline'])){
+					$this->load->view('admin/new_guideline', $data);
 				}else{
 					$this->load->view('admin/error404', $data);
 				}
 			break;
 			case "view":
-				$guidlineID = $this->encrypt->decode($this->uri->segment(5));
+				$guidelineID = $this->encrypt->decode($this->uri->segment(5));
 				
-				$data['guidline'] = $this->guidline->load($guidlineID);
-				if(!empty($data['guidline'])){
-					$this->load->view('admin/view_guidline', $data);
+				$data['guideline'] = $this->guideline->load($guidelineID);
+				if(!empty($data['guideline'])){
+					$this->load->view('admin/view_guideline', $data);
 				}else{
 					$this->load->view('admin/error404', $data);
 				}
@@ -343,9 +343,9 @@ class Portal extends CI_Controller {
 			case "mocktest":
 				$this->load->view("admin/mocktest", $data);
 			break;
-			case "guidlines":
-				$data['guidlines'] = $this->guidline->getAll();
-				$this->load->view("admin/guidlines", $data);
+			case "guidelines":
+				$data['guidelines'] = $this->guideline->getAll();
+				$this->load->view("admin/guidelines", $data);
 			break;
 			default:
 		}
