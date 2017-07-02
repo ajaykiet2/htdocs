@@ -202,9 +202,19 @@ class Website extends CI_Controller {
 			);
 			
 			$response = array();
-			$this->load->library('email',EMAIL_CONFIG);
-			$this->email->from('admin@bricksadvisors.com', 'Ajay Kumar');
-			$this->email->to('ajaykiet2@gmail.com');
+			$config = array(
+			  'protocol' => 'mail',
+			  'mailpath' => '/usr/sbin/sendmail',
+			  'mailtype' => 'html',
+			  'charset' => 'iso-8859-1',
+			  'wordwrap' => TRUE
+			);
+			$this->load->library('email');
+			$this->email->initialize($config);
+			$this->email->set_newline("\r\n");
+			
+			$this->email->from('admin@hrdfi.com', 'HRD Foundation');
+			$this->email->to('hrdfi@vsnl.com');
 			$this->email->subject('Enquiry Request');
 			$body = $this->load->view("email/contact_request",$data,true);
 			$this->email->message($body);

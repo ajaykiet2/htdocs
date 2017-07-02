@@ -103,7 +103,6 @@
 							</div><!-- /admin-content-header-logo -->
                             <div class="admin-content-header-menu">
                                 <ul class="admin-content-header-menu-inner collapse">
-                                    <li><a href="#">Documentation</a></li>
                                     <li><a href="/admin/logout">Logout</a></li>
                                 </ul>
                                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".admin-content-header-menu-inner">

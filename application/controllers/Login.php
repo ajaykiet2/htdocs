@@ -95,11 +95,18 @@ class Login extends CI_Controller {
 						'logo'	=> "http://plapeo.com/assets/img/hrdlogo.jpg"
 					);
 					
+					$config = array(
+					  'protocol' => 'mail',
+					  'mailpath' => '/usr/sbin/sendmail',
+					  'mailtype' => 'html',
+					  'charset' => 'iso-8859-1',
+					  'wordwrap' => TRUE
+					);
 					$this->load->library('email');
-					$this->email->initialize(EMAIL_CONFIG);
+					$this->email->initialize($config);
 					
 					$this->email->set_newline("\r\n");
-					$this->email->from('ajaykiet2@gmail.com', 'Ajay Kumar');
+					$this->email->from('support@hrdfi.com', 'HRD Foundation');
 					$this->email->to($emailID);
 					$this->email->subject('Password Reset Request');
 					$body = $this->load->view("email/password_reset",$data,true);
