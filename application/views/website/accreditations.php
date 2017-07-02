@@ -68,7 +68,7 @@
 		</div>
 		<div class="sidebar col-sm-4 col-md-3">			
 			<!-- start:Best Agents -->
-			<?php $this->load->view("website/includes/widgets/accreditations");?>");?>
+			<?php $this->load->view("website/includes/widgets/accreditations");?>
 			
 			<!-- start:Recent Property -->	
 			<?php $this->load->view("website/includes/widgets/advisory_board");?>

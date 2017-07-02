@@ -714,9 +714,9 @@ class Ajax extends CI_Controller {
 						$config['create_thumb'] = FALSE;
 						$config['quality'] = '100%';
 						$config['overwrite'] = TRUE;
-						$config['maintain_ratio'] = FALSE;
-						$config['width'] = 300;
-						$config['height'] = 300;
+						$config['maintain_ratio'] = true;
+						$config['width'] = 200;
+						$config['height'] = 200;
 
 						//load resize library
 						$this->load->library('image_lib', $config);
@@ -780,9 +780,9 @@ class Ajax extends CI_Controller {
 							$config['create_thumb'] = FALSE;
 							$config['quality'] = '100%';
 							$config['overwrite'] = TRUE;
-							$config['maintain_ratio'] = FALSE;
-							$config['width'] = 300;
-							$config['height'] = 300;
+							$config['maintain_ratio'] = TRUE;
+							$config['width'] = 200;
+							$config['height'] = 200;
 
 							//load resize library
 							$this->load->library('image_lib', $config);

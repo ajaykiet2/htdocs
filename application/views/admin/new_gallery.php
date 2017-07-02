@@ -38,7 +38,7 @@ $gallery = (isset($gallery)) ? $gallery : (object)array(
 				</div>
 				<div class="form-group col-md-12 col-sm-12 col-xs-12">
 					<label><strong> Gallery Name</strong></label>
-					<input class="form-control" name="name" type="text" placeholder="Gallery Title" value="<?=$gallery->name;?>">
+					<input class="form-control" name="name" type="text" placeholder="Gallery Name" value="<?=$gallery->name;?>">
 				</div>
 			</div>
 		</div>

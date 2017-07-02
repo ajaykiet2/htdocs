@@ -10,33 +10,18 @@
 			<?php if(is_array($galleries)):?>
 				<div class="row">
 					<?php foreach($galleries as $gallery):?>
-						<div class="col-sm-6 col-md-4">
-							<div class="property-box">
-								<div class="property-box-content">
-									<div class="property-box-meta">
-										<div class="property-box-meta-item">
-											<span><?=$gallery->name?></span>
-										</div>
-									</div>
-								</div>
-								<div class="property-box-image">
-									<a href="/gallery/<?=$gallery->id;?>">
-										<img src="/assets/img/gallery/thumbs/gallery_x300_<?=$gallery->image;?>" alt="<?=$gallery->name?>" class="img-responsive">
-										<span class="property-box-excerpt">
-											<?=$gallery->shortDescription;?>
+					
+						<div class="col-sm-6 col-md-4 col-lg-3">
+							<div class="promo blue">
+								<a href="/gallery/<?=$gallery->id;?>">
+								<div class="promo-content"><span class="promo-subtitle"><?=$gallery->name;?></span></div>
+									<span class="promo-image">
+										<span class="promo-image-inner">
+											<img class="img-responsive" src="/assets/img/gallery/thumbs/gallery_x300_<?=$gallery->image;?>" alt="<?=$gallery->name?>">
 										</span>
-									</a>
-								</div>
-								<div class="property-box-bottom">
-									<div class="property-box-price">
-										<?=$gallery->title;?>
-									</div>
-
-									<a href="/gallery/<?=$gallery->id;?>" class="property-box-view">
-										View Detail
-									</a>
-								</div>
-							</div>
+									</span><!-- /.promo-image -->
+								</a>
+							</div><!-- /.promo -->
 						</div>
 					<?php endforeach;?>
 				</div><!-- /.row -->

@@ -29,9 +29,9 @@ class Gallery extends CI_Model{
             $this->db->limit($params['limit']);
         }
         
-        $acrdtion = $this->db->get();
+        $glry = $this->db->get();
         
-        return ($acrdtion->num_rows() > 0) ? $acrdtion->result(): FALSE;
+        return $glry->result();
 	}
 	
 	public function total(){

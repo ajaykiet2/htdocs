@@ -6,7 +6,7 @@
 <div class="container">
 	<div class="row">
 		<div class="content col-sm-8 col-md-9">
-            <h2 class="page-header"><?=$gallery->title;?></h2>
+            <h1 class="page-header"><?=$gallery->title;?></h1>
 			<div class="post box">
 				<div class="post-meta">
 					<div class="post-meta-author">

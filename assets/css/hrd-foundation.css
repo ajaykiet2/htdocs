@@ -7057,6 +7057,7 @@ button.btn, button.btn-secondary {
 
 .promo-content {
   background-color: #fff;
+  border-bottom:1px solid #CCC;
   overflow: hidden;
   padding: 16px;
   position: relative;
@@ -7095,6 +7096,8 @@ button.btn, button.btn-secondary {
 
 .promo-image {
   display: block;
+  background:#FFF;
+  padding:5px;
   -webkit-filter: blur(0px);
   filter: blur(0px);
   position: relative;
@@ -7102,7 +7105,9 @@ button.btn, button.btn-secondary {
   transition: all .15s linear; }
   .promo-image img {
     transition: all .15s linear;
-    width: 100%; }
+    width: auto; 
+	margin:0 auto;	
+	height:140px;}
 
 .promo-image-inner {
   display: block;
