@@ -16,7 +16,7 @@
 
 				<div class="post-image">
 					<a href="#">
-						<img src="/assets/img/gallery/<?=$gallery->id;?>.jpg" alt="<?=$gallery->name;?>">
+						<img src="/assets/img/gallery/<?=$gallery->image;?>" alt="<?=$gallery->name;?>">
 					</a>
 				</div><!-- /.post-image -->
 

@@ -8753,7 +8753,7 @@ text-transform: uppercase;	}
 .property-box-meta-item {
   float: left;
   text-align: center;
-  width: 33.33%; }
+  }
   .property-box-meta-item span, .property-box-meta-item strong {
     display: block; }
   .property-box-meta-item span {

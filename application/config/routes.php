@@ -90,17 +90,19 @@ $route['admin/courses/(:any)/chepter/(:any)/slide/edit/(:any)'] = 'admin/portal/
 //--------------------------------------------------------------------------------------#
 $route['admin/configurations'] = 'admin/portal/configurations';                         #
 $route['admin/configurations/gallery'] = 'admin/portal/configurations';                 #    
+$route['admin/configurations/gallery/new'] = 'admin/portal/gallery';                    #    
+$route['admin/configurations/gallery/edit/(:any)'] = 'admin/portal/gallery';            #        
 $route['admin/configurations/faq'] = 'admin/portal/configurations/';                    #             
 $route['admin/configurations/accreditation'] = 'admin/portal/configurations';	        #
 $route['admin/configurations/mocktest'] = 'admin/portal/configurations';                #
 $route['admin/configurations/guidelines'] = 'admin/portal/configurations';              #
-                                                                                        #
                                                                                         #
 $route['admin/assessment'] = 'admin/portal/assessment';                                 #
 $route['admin/assessment/detail'] = 'admin/portal/assessmentDetail';                    #
 $route['admin/ajax/assessmentAction'] = 'admin/ajax/assessmentAction'; 
 
 $route['admin/ajax/guidelineAction'] = 'admin/ajax/guidelineAction';
+$route['admin/ajax/galleryAction'] = 'admin/ajax/galleryAction';
 $route['admin/configurations/guidelines/new'] = 'admin/portal/guideline';
 $route['admin/configurations/guidelines/edit/(:any)'] = 'admin/portal/guideline';
 $route['admin/configurations/guidelines/view/(:any)'] = 'admin/portal/guideline';

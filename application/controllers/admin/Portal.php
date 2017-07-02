@@ -243,7 +243,7 @@ class Portal extends CI_Controller {
 	
 	
 	#==============================================================
-	# slides action start
+	# Guideline action start
 	public function guideline(){
 		
 		$action = $this->uri->segment(4);
@@ -281,6 +281,35 @@ class Portal extends CI_Controller {
 		return;
 	}
 	
+	
+	#==============================================================
+	# Gallery action start
+	public function gallery(){
+		
+		$action = $this->uri->segment(4);
+		#==================================================
+		$data['env'] =  $this->environment->load('admin');
+		$data['action'] =  $action;
+		#---------------------------------------------------
+		switch($action){
+			case "new":
+				$this->load->view('admin/new_gallery',$data);
+			break;
+			case "edit":
+				$id = $this->encrypt->decode($this->uri->segment(5));
+				
+				$data['gallery'] = $this->gallery->get($id);
+				if(!empty($data['gallery'])){
+					$this->load->view('admin/new_gallery', $data);
+				}else{
+					$this->load->view('admin/error404', $data);
+				}
+			break;
+			default: $this->load->view('admin/error404', $data);
+		}
+		#---------------------------------------------------
+		return;
+	}
 	
 	
 	

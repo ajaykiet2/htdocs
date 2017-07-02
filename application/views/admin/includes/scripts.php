@@ -1,4 +1,5 @@
 <script type="text/javascript" src="/assets/js/jquery.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.form.min.js"></script>
 <script type="text/javascript" src="/assets/libraries/jquery-transit/jquery.transit.js"></script>
 
 <script type="text/javascript" src="/assets/libraries/bootstrap/bootstrap.min.js"></script>

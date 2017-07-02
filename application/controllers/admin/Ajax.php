@@ -656,6 +656,192 @@ class Ajax extends CI_Controller {
 		}
 	}
 	
+	public function galleryAction(){
+		$action = $this->input->post("action");
+		
+		switch($action){
+			case "new":
+				$this->form_validation->set_error_delimiters('', '');
+				$this->form_validation->set_rules("title", "Gallery Title", "trim|required");
+				$this->form_validation->set_rules("name", "Gallery Name", "trim|required");
+				$this->form_validation->set_rules("shortDescription", "Overview", "trim|required|min_length[50]|max_length[250]");	
+				$this->form_validation->set_rules("fullDescription", "Full Description", "trim|required|min_length[100]");
+				if($this->form_validation->run() == FALSE){
+					echo json_encode( array(
+						'status' => false,
+						'message' => "<p class='text-danger'>".implode('!</br>',explode('.', validation_errors()))."</p>"
+					));
+					return;
+				}else{
+					if(empty($_FILES)) {
+						$data['status'] = false;
+						$data['message'] = 'Please select a valid image to upload';
+						echo json_encode($data);
+						return;
+					}			
+					$data_to_save = array(
+						'title' => $this->input->post("title"),
+						'name' => $this->input->post("name"),
+						'shortDescription' => $this->input->post("shortDescription"),
+						'fullDescription' => $this->input->post("fullDescription"),
+					);
+					$galleryID = $this->gallery->add($data_to_save);
+
+					$arr = explode(".", $_FILES["file_to_upload"]["name"]);
+					$ext = end($arr);
+					
+					$new_name = $galleryID.".".$ext;
+					
+					$config['upload_path']          = FCPATH."assets/img/gallery/";
+					$config['allowed_types']        = 'gif|jpg|jpeg|png|GIF|JPG|JPEG|PNG';
+					$config['overwrite'] 			= TRUE;
+					$config['max_size']             = 10000;
+					$config['max_width']            = 2448;
+					$config['max_height']           = 5000;
+					$config['file_name'] 			= $new_name;
+					
+					$this->load->library('upload', $config);
+					
+					if($this->upload->do_upload('file_to_upload')){
+						$this->gallery->update($galleryID, array('image' => $new_name));
+						
+						$upload_data = $this->upload->data();
+						
+						//Thumbnail Image Upload - Start
+						$config['image_library'] = 'gd2';
+						$config['source_image'] =  FCPATH."assets/img/gallery/". $upload_data['file_name'];
+						$config['new_image'] =  FCPATH."assets/img/gallery/thumbs/gallery_x300_".$new_name;
+						$config['create_thumb'] = FALSE;
+						$config['quality'] = '100%';
+						$config['overwrite'] = TRUE;
+						$config['maintain_ratio'] = FALSE;
+						$config['width'] = 300;
+						$config['height'] = 300;
+
+						//load resize library
+						$this->load->library('image_lib', $config);
+						$this->image_lib->resize();
+						//Thumbnail Image Upload - End
+						$data['status'] = true;
+						$data['message'] = 'Sucessfully Added';
+						echo json_encode($data);
+					}else{
+						$this->gallery->delete($galleryID);
+						$data['status'] = false;
+						$data['message'] = 'The following error occured : '.$this->upload->display_errors().'Click on "Remove" and try again!';
+						
+						echo json_encode($data);
+					}
+				}
+			
+			break;
+			
+			case "edit":
+				$this->form_validation->set_error_delimiters('', '');
+				$this->form_validation->set_rules("title", "Gallery Title", "trim|required");
+				$this->form_validation->set_rules("name", "Gallery Name", "trim|required");
+				$this->form_validation->set_rules("shortDescription", "Overview", "trim|required|min_length[50]|max_length[250]");	
+				$this->form_validation->set_rules("fullDescription", "Full Description", "trim|required|min_length[100]");
+				
+				if($this->form_validation->run() == FALSE){
+					echo json_encode( array(
+						'status' => false,
+						'message' => "<p class='text-danger'>".implode('!</br>',explode('.', validation_errors()))."</p>"
+					));
+					return;
+				}else{
+					$galleryID = $this->input->post('id');
+					$status = false;
+					if(!empty($_FILES)){
+						$arr = explode(".", $_FILES["file_to_upload"]["name"]);
+						$ext = end($arr);
+						
+						$new_name = $galleryID.".".$ext;
+						
+						$config['upload_path']          = FCPATH."assets/img/gallery/";
+						$config['allowed_types']        = 'gif|jpg|jpeg|png|GIF|JPG|JPEG|PNG';
+						$config['overwrite'] 			= TRUE;
+						$config['max_size']             = 10000;
+						$config['max_width']            = 2448;
+						$config['max_height']           = 5000;
+						$config['file_name'] 			= $new_name;
+						
+						$this->load->library('upload', $config);
+						
+						if($this->upload->do_upload('file_to_upload')){
+							$this->gallery->update($galleryID, array('image' => $new_name));
+							
+							$upload_data = $this->upload->data();
+							
+							//Thumbnail Image Upload - Start
+							$config['image_library'] = 'gd2';
+							$config['source_image'] =  FCPATH."assets/img/gallery/". $upload_data['file_name'];
+							$config['new_image'] =  FCPATH."assets/img/gallery/thumbs/gallery_x300_".$new_name;
+							$config['create_thumb'] = FALSE;
+							$config['quality'] = '100%';
+							$config['overwrite'] = TRUE;
+							$config['maintain_ratio'] = FALSE;
+							$config['width'] = 300;
+							$config['height'] = 300;
+
+							//load resize library
+							$this->load->library('image_lib', $config);
+							$this->image_lib->resize();
+							//Thumbnail Image Upload - End
+							$status = true;
+						}
+						
+					}
+					
+					if($status || empty($_FILES)){
+						$data_to_save = array(
+							'title' => $this->input->post("title"),
+							'name' => $this->input->post("name"),
+							'shortDescription' => $this->input->post("shortDescription"),
+							'fullDescription' => $this->input->post("fullDescription"),
+						);
+						if($this->gallery->update($galleryID, $data_to_save)){
+							$status = true;
+						}
+					}
+					if($status){
+						echo json_encode( array(
+							'status' => true,
+							'message' => "Successfully Updated"
+						));
+					}else{
+						echo json_encode( array(
+							'status' => false,
+							'message' => "Unable to Update"
+						));
+					}
+				}
+			
+			break;
+			
+			case "delete":
+			$galleryID = $this->input->post("galleryID");
+			$gallery = $this->gallery->get($galleryID);
+			$imgPath = FCPATH."assets/img/gallery/".$gallery->image;
+			$thumbPath = FCPATH."assets/img/gallery/thumbs/gallery_x300_".$gallery->image;
+			if($this->gallery->delete($galleryID)){
+				unlink($imgPath);
+				unlink($thumbPath);
+				echo json_encode( array(
+					'status' => true,
+					'message' => "Gallery Deleted Successfully!"
+				));
+			}else{
+				echo json_encode( array(
+					'status' => false,
+					'message' => "Unable to delete!"
+				));
+			}
+			break;
+			
+			default:			
+		}
+	}
 	
 	#=====================================================
 	#Guidline Action Start

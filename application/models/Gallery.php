@@ -43,8 +43,8 @@ class Gallery extends CI_Model{
 		return $this->db->delete("gallery");
 	}
 	
-	public function add($accrData){
-		$this->db->insert("gallery", $accrData);
+	public function add($galleryData){
+		$this->db->insert("gallery", $galleryData);
 		return $this->db->insert_id();
 	}
 	

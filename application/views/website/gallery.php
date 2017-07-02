@@ -21,7 +21,7 @@
 								</div>
 								<div class="property-box-image">
 									<a href="/gallery/<?=$gallery->id;?>">
-										<img src="/assets/img/gallery/<?=$gallery->id;?>.jpg" alt="<?=$gallery->name?>">
+										<img src="/assets/img/gallery/thumbs/gallery_x300_<?=$gallery->image;?>" alt="<?=$gallery->name?>" class="img-responsive">
 										<span class="property-box-excerpt">
 											<?=$gallery->shortDescription;?>
 										</span>
