@@ -7439,7 +7439,7 @@ button.btn, button.btn-secondary {
         color: #424242; }
 
 .footer-top-inner {
-  border-bottom: 2px solid rgb(247, 27, 139);
+  border-bottom: 1px solid rgba(251, 251, 251, 0.36);
   padding: 25px 0px; }
   .footer-simple .footer-top-inner {
     border-bottom: 1px solid rgba(0, 0, 0, 0.05); }

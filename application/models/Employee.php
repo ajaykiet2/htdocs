@@ -308,7 +308,7 @@ class Employee extends CI_Model{
 			'employeeID' => $emp->employeeID,
 			'token' => $token
 		);
-		if($this->db->insert("forgotPassword", $data)){
+		if($this->db->insert("forgotpassword", $data)){
 			return $token;
 		}else{
 			return null;
@@ -316,7 +316,7 @@ class Employee extends CI_Model{
 	}
 	
 	public function getTokenInfo($token){
-		$info = $this->db->get_where("forgotPassword", array("token"=>$token));
+		$info = $this->db->get_where("forgotpassword", array("token"=>$token));
 		if($info->num_rows() > 0){
 			return $info->result()[0];
 		}else{
@@ -325,7 +325,7 @@ class Employee extends CI_Model{
 	}
 	public function expireToken($empid){
 		$this->db->where("employeeID", $empid);
-		return $this->db->delete("forgotPassword");
+		return $this->db->delete("forgotpassword");
 	}
 	
 }
