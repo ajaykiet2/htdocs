@@ -315,6 +315,12 @@ class Employee extends CI_Model{
 		}
 	}
 	
+	public function changePassword($employeeID, $password){
+		$password = md5($password);
+		$this->db->where('employeeID',$employeeID);
+		return $this->db->update('employee', array('password' => $password));
+	}
+	
 	public function getTokenInfo($token){
 		$info = $this->db->get_where("forgotpassword", array("token"=>$token));
 		if($info->num_rows() > 0){

@@ -112,7 +112,8 @@ class Portal extends CI_Controller {
 					'companyID' => $companyID,
 					'departmentID' => $departmentID,
 				);
-				$this->employee->add($emp_data);
+				if(!$this->employee->email_exist(email))
+					$this->employee->add($emp_data);
 			}
 		}
 		

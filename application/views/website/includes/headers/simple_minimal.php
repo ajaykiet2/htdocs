@@ -18,6 +18,7 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/website.extra.css">
 	<script type="text/javascript" src="/assets/js/jquery.js"></script>
 	<script type="text/javascript" src="/assets/js/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="/assets/js/jquery.form.min.js"></script>
 	<link rel="stylesheet" href="/assets/libraries/loader/jquery-loading.min.css"/>
 	<script type="text/javascript" src="/assets/libraries/loader/jquery-loading.js"></script>
 	<script type="text/javascript" src="/assets/libraries/jquery-confirm/jquery-confirm.min.js"></script>

@@ -148,52 +148,81 @@ class Login extends CI_Controller {
 	}
 	
 	public function resetPassword(){
-		$this->form_validation->set_error_delimiters('', '');
-		$this->form_validation->set_rules("token", "Token", "required");
+		$this->db->cache_delete_all();
+		$token = $this->input->get_post('token');
 		$data = array("response" => null);
 		$data['env'] = $this->environment->load();
-		if($this->input->is_ajax_request()){	
+		$emp = $this->employee->getTokenInfo($token);
+		if(empty($emp)){
+			$this->load->view("website/error404", $data);
+			return;
+		}
+		
+		if($this->input->is_ajax_request()){
+			unset($data['env']);
 			$this->form_validation->set_rules("password", "Password", "trim|required|min_length[8]|max_length[15]");
 			$this->form_validation->set_rules("re_password", "Repeat Password", "trim|required|matches[password]");
+			
 			if($this->form_validation->run() == FALSE){
 				$data['response'] = (object)array(
 					'status' => false,
 					'source' => "resetPassword",
 					'message' => validation_errors()
 				);
+				echo json_encode($data);
+				return;
 			}else{
-				$password = md5($this->input->post("password"));
-				$token = $this->input->get("token");
-				$emp = $this->employee->getTokenInfo($token);
-				if($emp != null){
-					$this->employee->changePassword($emp->employeeID, $password);
-					$this->employee->expireToken($emp->employeeID);
-					$data['response'] = (object)array(
-						'status' => true,
-						'source' => "resetPassword",
-						'message' => "Your password has been successfully changed."
-					);
+				$password = $this->input->post("password");
+				if($emp != null ){
+					if(daysFromToday($emp->timeStamp) < 2){
+						$this->employee->changePassword($emp->employeeID, $password);
+						
+						$data['response'] = (object)array(
+							'status' => true,
+							'source' => "resetPassword",
+							'message' => "Your password has been successfully changed."
+						);
+						$this->employee->expireToken($emp->employeeID);
+					}else{
+						$this->employee->expireToken($emp->employeeID);
+						$data['response'] = (object)array(
+							'status' => false,
+							'source' => "resetPassword",
+							'message' => "Your token has been expired or removed parmanently."
+						);
+					}
+					
 				}else{
 					$data['response'] = (object)array(
 						'status' => false,
 						'source' => "resetPassword",
-						'message' => "Your token has been expired or removed parmanently."
+						'message' => "Access Denied!"
 					);
 				}
 			}
 			print json_encode($data);
 			return;
 		}
-		if($this->form_validation->run() == FALSE){
-			$data['response'] = (object)array(
-				'status' => false,
-				'source' => "resetPassword",
-				'message' => validation_errors()
-			);
-			$this->load->view("token_expired", $data);
-			return;
+		if($emp != null){
+			if(daysFromToday($emp->timeStamp) < 2){
+				$data['response'] = (object)array(
+					'status' => true,
+					'source' => "resetPassword",
+					'token'	=> $token,
+				);
+				$this->load->view("website/resetPassword", $data);
+			}else{
+				$data['response'] = (object)array(
+					'status' => true,
+					'source' => "resetPassword",
+					'message'	=> "Your token has been expired or removed parmanently.",
+				);
+				$this->load->view("website/token_expired", $data);
+				$this->employee->expireToken($emp->employeeID);
+			}
+		}else{
+			$this->load->view("website/token_expired", $data);
 		}
-		$this->load->view("resetPassword");
 	}
 	
 	public function logout(){

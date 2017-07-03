@@ -10,7 +10,6 @@
 			<?php if(is_array($galleries)):?>
 				<div class="row">
 					<?php foreach($galleries as $gallery):?>
-					
 						<div class="col-sm-6 col-md-4 col-lg-3">
 							<div class="promo blue">
 								<a href="/gallery/<?=$gallery->id;?>">
