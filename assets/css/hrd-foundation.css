@@ -6465,7 +6465,7 @@ input[type=checkbox] {
     transition: opacity .15s linear; }
 
 .btn-secondary {
-  background-color: #1E88E5 !important; }
+  background-color: #213d65 !important; }
 
 button.btn, button.btn-secondary {
   color: #fff; }
@@ -7372,7 +7372,7 @@ button.btn, button.btn-secondary {
 [ 24. Footer ]
 */
 .footer {
-  background-color: #1E88E5;
+  background-color: #213d65;
   display: table-row;
   height: 1px; }
   .footer.footer-simple {
@@ -7707,7 +7707,7 @@ button.btn, button.btn-secondary {
         margin-right: 0px; }
 
 .header-topbar {
-  background-color: #1565C0;
+  background-color: #213d65;
   color: #E3F2FD;
   padding: 3px 0px; }
 
