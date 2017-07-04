@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 # This module will oprate the actions on FAQ
 #==========================================
 
-class Faq extends CI_Model{
+class Mocktest extends CI_Model{
 	
 	public function __construct(){
 		parent::__construct();
@@ -40,5 +40,10 @@ class Faq extends CI_Model{
 	public function delete($id){
 		$this->db->where('faqID', $id);
 		return $this->db->delete('faq');
+	}
+	
+	public function update($id, $data){
+		$this->db->where('faqID', $id);
+		return $this->db->update('faq', $data);
 	}
 }

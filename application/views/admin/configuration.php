@@ -15,9 +15,9 @@
 		</div>
 
 		<div class="col-lg-1 col-md-2 col-sm-3 col-xs-4">
-			<div class="gallery-item"  data-rel="tooltip" title="Manage FAQ">
+			<div class="gallery-item"  data-rel="tooltip" title="Manage Important Questions">
 				<div class="gallery-image">
-					<a href="/admin/configurations/faq">
+					<a href="/admin/configurations/impQuestions">
 						<img src="/assets/img/icons/faq.png" alt="" class="img img-responsive" >
 					</a>
 				</div><!-- /.gallery-image -->

@@ -252,7 +252,7 @@ a.fr-view.fr-green {
  */
 img.fr-view {
   position: relative;
-  max-width: 100%;
+  max-width: 100% !important;
 }
 img.fr-view.fr-dib {
   margin: 5px auto;

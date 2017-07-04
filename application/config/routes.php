@@ -36,8 +36,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 # Website routes start                                           #
 $route['default_controller'] = 'website';						 #
 $route['about'] = 'website';                                     #
-$route['faq'] = 'website/faq';                                   #
-$route['faq/(:num)'] = 'website/faq';                            #
+$route['importantQuestion'] = 'website/importantQuestion';                                   #
+$route['importantQuestion/(:num)'] = 'website/importantQuestion';                            #
 $route['guidelines'] = 'website/guidelines';                            #
 $route['courses'] = 'website/course';                            #
 $route['courses/page'] = 'website/course';                       #
@@ -83,6 +83,7 @@ $route['admin/ajax/courseAction'] = 'admin/ajax/courseAction';                  
 //--------------------------------------------------------------------------------------#
 $route['admin/courses/(:any)/chepter/(:any)'] = 'admin/portal/chepterDetail';           #
 $route['admin/ajax/slideAction'] = 'admin/ajax/slideAction';                            #
+$route['admin/ajax/impQuesAction'] = 'admin/ajax/impQuesAction';                            #
 //--------------------------------------------------------------------------------------#
 $route['admin/courses/(:any)/chepter/(:any)/slide/new'] = 'admin/portal/slide';         #
 $route['admin/courses/(:any)/chepter/(:any)/slide/view/(:any)'] = 'admin/portal/slide'; #
@@ -92,7 +93,7 @@ $route['admin/configurations'] = 'admin/portal/configurations';                 
 $route['admin/configurations/gallery'] = 'admin/portal/configurations';                 #    
 $route['admin/configurations/gallery/new'] = 'admin/portal/gallery';                    #    
 $route['admin/configurations/gallery/edit/(:any)'] = 'admin/portal/gallery';            #        
-$route['admin/configurations/faq'] = 'admin/portal/configurations/';                    #             
+$route['admin/configurations/impQuestions'] = 'admin/portal/configurations/';                    #             
 $route['admin/configurations/accreditation'] = 'admin/portal/configurations';	        #
 $route['admin/configurations/mocktest'] = 'admin/portal/configurations';                #
 $route['admin/configurations/guidelines'] = 'admin/portal/configurations';              #

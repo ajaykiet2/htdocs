@@ -9,7 +9,7 @@
 			<?php if(is_array($courses)):?>
 			<div class="row">
 			<?php foreach($courses as $course):?>
-				<div class="col-sm-6 col-md-4">
+				<div class="col-sm-6 col-xs-6 col-md-4">
 					<div class="agent-medium">
 						<div class="agent-medium-content">
 							<h5 class="agent-medium-title"><i class="fa fa-book"></i> <?=$course->title;?></h5>
@@ -53,20 +53,19 @@
 					</div><!-- /.faq-item-question -->
 				</div><!-- /.faq Container -->
 			<?php endif; ?>
+			<div class="row">
+				<div class="col-sm-6"><?php $this->load->view("website/includes/widgets/accreditations");?></div>
+				<div class="col-sm-6"><?php $this->load->view("website/includes/widgets/advisory_board");?></div>
+			</div>
+			
         </div>
 		<div class="sidebar col-sm-4 col-md-3">			
 			<!-- start:Best Agents -->
-			<?php $this->load->view("website/includes/widgets/accreditations");?>
-			
-			<!-- start:Recent Property -->	
-			<?php $this->load->view("website/includes/widgets/advisory_board");?>
-			
+			<?php $this->load->view("website/includes/widgets/enquire");?>
+			<?php $this->load->view("website/includes/widgets/contact");?>
 		</div><!-- /.sidebar -->
 	</div><!-- /.row -->
 </div><!-- /.container -->
-<?php $this->load->view('website/includes/widgets/social_links');?>
-
-<!-- end:contents -->
 
 <!-- start:footer -->
 <?php $this->load->view('website/includes/footers/navigation');?>

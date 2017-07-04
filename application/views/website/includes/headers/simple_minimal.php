@@ -31,8 +31,8 @@
 	<div class="header-topbar">
        <div class="container">
            <div class="header-topbar-right hidden-xs">
-              <strong><i class="fa fa-phone"></i> +91 9810500469</strong> | 
-              <strong><i class="fa fa-envelope"></i> hrdfi@vsnl.com</strong>
+              <strong><i class="fa fa-phone"></i> +91 <?=PORTAL_MOBILE;?></strong> | 
+              <strong><i class="fa fa-envelope"></i> <?=PORTAL_EMAIL;?></strong>
            </div><!-- /.header-topbar-left -->
 
            <div class="header-topbar-left hidden-sm hidden-xs">

@@ -580,7 +580,7 @@ class Ajax extends CI_Controller {
 	}
 	
 	#=====================================================
-	#Slide Actiion Start
+	#Slide Action Start
 	public function slideAction(){
 		$action = $this->input->post("action");
 		switch($action){
@@ -646,7 +646,7 @@ class Ajax extends CI_Controller {
 					}else{
 						echo json_encode( array(
 							'status' => false,
-							'message' => "Unable to update side!"
+							'message' => "Unable to update slide!"
 						));
 					}
 				}
@@ -655,6 +655,75 @@ class Ajax extends CI_Controller {
 			default:
 		}
 	}
+	
+	#=====================================================
+	#Slide Action Start
+	public function impQuesAction(){
+		$action = $this->input->post("action");
+		switch($action){
+			case "addNew":
+				$this->form_validation->set_error_delimiters('', '');
+				$this->form_validation->set_rules("question", "Question", "trim|required");
+				$this->form_validation->set_rules("answer", "Answer", "trim|required");
+				if($this->form_validation->run() == FALSE){
+					echo json_encode( array(
+						'status' => false,
+						'message' => "<p class='text-danger'>".implode('!</br>',explode('.', validation_errors()))."</p>"
+					));
+					return;
+				}else{
+					
+					$inputs = array(
+						'question' => $this->input->post("question"),
+						'answer' => $this->input->post("answer")
+					);
+					
+					if($this->faq->add($inputs)){
+						echo json_encode( array(
+							'status' => true,
+							'message' => "Question Added Successfully!"
+						));
+					}else{
+						echo json_encode( array(
+							'status' => false,
+							'message' => "Unable to add question!"
+						));
+					}
+				}
+			break;
+			case "delete":
+				$this->form_validation->set_error_delimiters('', '');
+				$this->form_validation->set_rules("questionID", "Correct Data", "trim|required|numeric");
+				if($this->form_validation->run() == FALSE){
+					echo json_encode( array(
+						'status' => false,
+						'message' => "<p class='text-danger'>".implode('!</br>',explode('.', validation_errors()))."</p>"
+					));
+					return;
+				}else{
+					$questionID =  $this->input->post("questionID");
+					$inputs = array(
+						'questionID' => $this->input->post("questionID")
+					);
+					if($this->faq->delete($questionID)){
+						echo json_encode( array(
+							'status' => true,
+							'message' => "Question Deleted Successfully!"
+						));
+					}else{
+						echo json_encode( array(
+							'status' => false,
+							'message' => "Unable to delete question!"
+						));
+					}
+				}
+			break;
+			
+			default:
+		}
+	}
+	
+	
 	
 	public function galleryAction(){
 		$action = $this->input->post("action");

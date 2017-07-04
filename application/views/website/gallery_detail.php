@@ -31,17 +31,10 @@
 		<div class="sidebar col-sm-4 col-md-3">			
 			<!-- start:Best Agents -->
 			<?php $this->load->view("website/includes/widgets/accreditations");?>
-			
-			<!-- start:Recent Property -->	
 			<?php $this->load->view("website/includes/widgets/advisory_board");?>
-			
 		</div><!-- /.sidebar -->
 	</div><!-- /.row -->
 </div><!-- /.container -->
-<?php $this->load->view('website/includes/widgets/social_links');?>
-
-<!-- end:contents -->
-
 <!-- start:footer -->
 <?php $this->load->view('website/includes/footers/navigation');?>
 <!-- end:footer -->

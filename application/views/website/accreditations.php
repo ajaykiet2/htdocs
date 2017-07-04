@@ -67,9 +67,7 @@
 			<?php $this->load->view("website/includes/widgets/contact");?>
 		</div><!-- /.sidebar -->
 	</div><!-- /.row -->
-</div><!-- /.container -->
-
-<?php $this->load->view('website/includes/widgets/social_links');?>
+</div>
 <!-- start:footer -->
 <?php $this->load->view('website/includes/footers/navigation');?>
 <!-- end:footer -->

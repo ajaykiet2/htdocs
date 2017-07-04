@@ -360,7 +360,7 @@ class Portal extends CI_Controller {
 				$data['galleries'] = $this->gallery->load(array("start"=>0));
 				$this->load->view("admin/gallery", $data);
 			break;
-			case "faq":
+			case "impQuestions":
 				$data['faqs'] = $this->faq->load(array("start"=>0));
 				$this->load->view("admin/faq", $data);
 			break;
@@ -377,7 +377,7 @@ class Portal extends CI_Controller {
 				$data['guidelines'] = $this->guideline->getAll();
 				$this->load->view("admin/guidelines", $data);
 			break;
-			default:
+			default: 
 		}
 		if(empty($action)){
 			$this->load->view('admin/configuration', $data);

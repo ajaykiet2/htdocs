@@ -2,11 +2,6 @@
 <div class="header-edge">
 	<div class="container">
 		<span class="header-edge-title">Guidelines to follow</span>
-		<!--<ol class="breadcrumb pull-right">
-			<?php foreach($env['breadcrumb'] as $bradcrumb):?>
-			<li class="<?=$bradcrumb->class;?>"><a href="<?=$bradcrumb->link;?>"><?=$bradcrumb->name;?></a></li>
-			<?php endforeach;?>
-		</ol>-->
 	</div>
 </div>
 

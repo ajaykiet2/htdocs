@@ -22,7 +22,7 @@ class Website extends CI_Controller {
 	}
 	
 	#function for frequently asked question
-	public function faq(){
+	public function importantQuestion(){
 		
 		$pageNum = ($this->uri->segment(2)) ? $this->uri->segment(2) : 1;
 		$limit = 5;
@@ -52,8 +52,41 @@ class Website extends CI_Controller {
 			);
 			$this->load->view('website/error404', $data);
 		}
-		
 	}
+	
+	#function for Mocktest and important question
+	public function mocktest(){
+		
+		$pageNum = ($this->uri->segment(2)) ? $this->uri->segment(2) : 1;
+		$limit = 5;
+		$offset = ($pageNum - 1) * $limit;
+		
+		$params = array(
+			'start' => $offset,
+			'limit' => $limit
+		);
+		
+		$faqs = $this->faq->load($params);
+		
+		if($faqs != null){
+			$data = array(
+				"env" => $this->environment->load(),
+				'qadata' => $faqs,
+				'pagination' => (object)array(
+					'total' => $this->faq->total(),
+					'pageNum' => $pageNum,
+					'limit'	=> $limit
+				),
+			);
+			$this->load->view('website/mocktest',$data);
+		}else{
+			$data = array(
+				'env' => $this->environment->load(),
+			);
+			$this->load->view('website/error404', $data);
+		}
+	}
+	
 	
 	public function guidelines(){
 		$guidlines = $this->guideline->getAll();
@@ -64,7 +97,7 @@ class Website extends CI_Controller {
 		$this->load->view('website/guidelines',$data);
 	}
 	
-	#function for frequently asked question
+	#function for Gallery
 	public function gallery(){
 		$pageIdx = ($this->uri->segment(3)) ? $this->uri->segment(3) : 1;
 		$pageNum = ($pageIdx == (int) $pageIdx) ? (int) $pageIdx : 0;
@@ -78,7 +111,7 @@ class Website extends CI_Controller {
 		
 		$galleries = $this->gallery->load($params);
 		
-		if($galleries != null){
+		if(!empty($galleries)){
 			$data = array(
 				'env' => $this->environment->load(),
 				'galleries' => $galleries,
@@ -97,7 +130,7 @@ class Website extends CI_Controller {
 		}
 		
 	}
-	#function for frequently asked question
+	#function for Gallery details
 	public function galleryDetail(){
 		$id = ($this->uri->segment(2)) ? $this->uri->segment(2) : 1;
 		$galleryID = ($id == (int)$id) ? (int)$id : 1;
@@ -119,7 +152,7 @@ class Website extends CI_Controller {
 	}
 	
 	
-	#function for frequently asked question
+	#function for Accreditations
 	public function accreditations(){
 		$pageIdx = ($this->uri->segment(2)) ? $this->uri->segment(2) : 1;
 		$pageNum = ($pageIdx == (int) $pageIdx) ? (int) $pageIdx : 0;
@@ -145,7 +178,7 @@ class Website extends CI_Controller {
 		
 		
 	}
-	#function for frequently asked question
+	#function for Accreditations Detail
 	public function accreditationDetail(){
 		$ID = ($this->uri->segment(2)) ? $this->uri->segment(2) : 1;
 		
@@ -166,7 +199,7 @@ class Website extends CI_Controller {
 	}
 	
 	
-	#function for frequently asked question
+	#function for Course
 	public function course(){
 		$pageNum = ($this->uri->segment(3)) ? $this->uri->segment(3) : 1;
 		$limit = 9;
@@ -216,7 +249,7 @@ class Website extends CI_Controller {
 			$this->email->set_newline("\r\n");
 			
 			$this->email->from('portal@hrdfi.com', 'HRD Foundation');
-			$this->email->to('ajaykiet2@gmail.com');
+			$this->email->to(PORTAL_EMAIL);
 			$this->email->subject('Contact Request');
 			$body = $this->load->view("email/contact_request",$data,true);
 			$this->email->message($body);
