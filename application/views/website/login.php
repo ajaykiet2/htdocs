@@ -1,3 +1,7 @@
+<?php $source = isset($response->source) ? $response->source : "login"; 
+$hideLogin = ($source == 'forgotPassword') ? 'display:none' : '';
+$hideForgotPassword = ($source == 'login') ? 'display:none' : '';
+?>
 <!DOCTYPE html>
 <html>
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
@@ -90,8 +94,7 @@
 			</div>
 		</div>
 	</div>
-
-	<div class="admin-sidebar-secondary" id="login-container">
+	<div class="admin-sidebar-secondary" style="<?=$hideLogin;?>" id="login-container">
 		<div class="admin-sidebar-secondary-inner">
 			<div class="admin-sidebar-secondary-inner-top">
 				<h1><img src="/assets/img/hrdlogo.jpg" class="img img-responsive" style="max-height:50px; margin: 5px auto;"></h1>
@@ -103,7 +106,7 @@
 						<input type="password" name="password" class="form-control" placeholder="Password">
 					</div>
 					<?php if(isset($response->status)):
-						if(!$response->status):
+						if(!$response->status && $response->message != ''):
 					?>
 					<div class="alert alert-danger">
 						<small class="text-uppercase"><?=$response->message;?></small>
@@ -129,7 +132,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="admin-sidebar-secondary" id="forgot-container">
+	<div class="admin-sidebar-secondary" style="<?=$hideForgotPassword;?>" id="forgot-container">
 		<div class="admin-sidebar-secondary-inner">
 			<div class="admin-sidebar-secondary-inner-top">
 				<h1><img src="/assets/img/hrdlogo.jpg" class="img img-responsive" style="max-height:50px; margin: 5px auto;"></h1>
@@ -139,8 +142,10 @@
 						<input type="email" name="emailID" class="form-control" placeholder="E-mail">
 					</div>
 
-					<?php if(isset($response->status)):
-						if(!$response->status):
+					<?php 
+					if(isset($response->status)):
+							if($response->message != ''):
+								if(!$response->status):
 					?>
 					<div class="alert alert-danger">
 						<small class="text-uppercase"><?=$response->message;?></small> 
@@ -149,7 +154,7 @@
 					<div class="alert alert-success">
 						<small class="text-uppercase"><?=$response->message;?></small> 
 					</div>
-					<?php endif;endif;?>
+					<?php endif;endif;endif;?>
 					<center><button type="submit" class="btn btn-xl btn-block">
 						<i class="fa fa-long-arrow-right"></i>Request New Password
 					</button></center>
@@ -172,21 +177,9 @@
 		</div>
 	</div>
 </div>
-<?php $source = isset($response->source) ? $response->source : "login"; ?>
+
 <script>
 $(document).ready(function(){
-	$("#login-container").hide();
-	$("#forgot-container").hide();
-	var source = '<?=$source;?>';
-	
-	if(source === 'login'){
-		$("#login-container").show();
-		$("#forgot-container").hide();
-	}else if(source === 'forgotPassword'){
-		$("#login-container").hide();
-		$("#forgot-container").show();
-	}
-	
 	$("#forgot-password").click(function(){
 		$("form .alert").remove();
 		$("#login-container").hide();
