@@ -9,14 +9,15 @@
 		<div class="item">
 		  <img src="<?=base_url('assets/img/banners/3.jpg');?>" alt="...">
 		  <div class="carousel-caption">
-			  <div class="col-sm-6 col-xs-6"></div>
-			  <div class="col-sm-6 col-xs-6">
+		  <div class="col-sm-6 col-xs-6">
 				<div class="header-call-to-action">
-					<div class="buttons">
-						<a href="/mocktest" class="btn btn-lg">Mock Test & Questions</a>
+					<div class="buttons pull-left">
+						<a href="/mocktest" class="btn btn-xl">Mock Test & Questions</a>
 					</div>
 				</div>
 			  </div>
+			  <div class="col-sm-6 col-xs-6"></div>
+			  
 		  </div>
 		</div>
 		<div class="item">
@@ -25,8 +26,8 @@
 			  <div class="col-sm-6 col-xs-6"></div>
 			  <div class="col-sm-6 col-xs-6">
 				<div class="header-call-to-action">
-					<div class="buttons">
-						<a href="/contact" class="btn btn-lg">Contact for Training</a>
+					<div class="buttons pull-right">
+						<a href="/contact" class="btn btn-xl">Contact for Training</a>
 					</div>
 				</div>
 			  </div>
@@ -35,14 +36,15 @@
 		<div class="item active">
 		  <img src="<?=base_url('assets/img/banners/1.jpg');?>" alt="...">
 		  <div class="carousel-caption">
-			<div class="col-sm-6 col-xs-6"></div>
-			<div class="col-sm-6 col-xs-6">
+		  <div class="col-sm-6 col-xs-6">
 				<div class="header-call-to-action">
-					<div class="buttons">
-						<a href="/accreditations" class="btn btn-lg">Accreditations</a>
+					<div class="buttons pull-left">
+						<a href="/accreditations" class="btn btn-xl">Accreditations</a>
 					</div>
 				</div>
 			</div>
+			<div class="col-sm-6 col-xs-6"></div>
+			
 		  </div>
 		</div>
 	  </div>

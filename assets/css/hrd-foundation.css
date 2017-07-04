@@ -5311,8 +5311,7 @@ button.close {
   overflow: hidden;
   width: 100%;
   background:#E91E63;
-  border-top:1px dashed #084aad;
-  border-bottom:1px dashed #084aad;
+
   }
   .carousel-inner > .item {
     display: none;
