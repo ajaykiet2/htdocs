@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="/assets/libraries/jquery-confirm/jquery-confirm.min.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/hrd-foundation-admin.css">
 	<link rel="stylesheet" type="text/css" href="/assets/libraries/pace/pace.min.css">
+	<link rel="stylesheet" type="text/css" href="/assets/libraries/loader/jquery-loading.min.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
 	<link rel="stylesheet" type="text/css" href="/assets/css/my_styling.css"/>
 

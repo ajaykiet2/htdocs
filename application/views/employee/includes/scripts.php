@@ -16,6 +16,7 @@
 <script type="text/javascript" src="/assets/libraries/nvd3/examples/stream_layers.js"></script>
 <script type="text/javascript" src="/assets/libraries/jquery-confirm/jquery-confirm.min.js"></script>
 <script type="text/javascript" src="/assets/libraries/pace/pace.min.js"></script>
+<script type="text/javascript" src="/assets/libraries/loader/jquery-loading.js"></script>
 <script type="text/javascript" src="/assets/js/hrd-foundation-admin.js"></script>
 <script type="text/javascript" src="/assets/js/notify.min.js"></script>
 <script type="text/javascript" src="/assets/js/jquery.form.min.js"></script>
