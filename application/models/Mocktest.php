@@ -1,16 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-#============================================
-# This module will oprate the actions on FAQ
-#==========================================
+#=================================================
+# This module will oprate the actions on Mocktest
+#===============================================
 
 class Mocktest extends CI_Model{
 	
 	public function __construct(){
 		parent::__construct();
-		
-		# load more modules
 	}
 	
 	public function load($params){

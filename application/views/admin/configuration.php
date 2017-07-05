@@ -2,7 +2,7 @@
 <h1 class="page-header">Website Configurations</h1>
 <div class="gallery">
 	<div class="row">
-		<div class="col-lg-1 col-md-2 col-sm-3 col-xs-4">
+		<div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
 			<div class="gallery-item" data-rel="tooltip" title="Manage Galleries">
 				<div class="gallery-image">
 					<a href="/admin/configurations/gallery">
@@ -14,7 +14,7 @@
 			</div><!-- /.gallery-item -->
 		</div>
 
-		<div class="col-lg-1 col-md-2 col-sm-3 col-xs-4">
+		<div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
 			<div class="gallery-item"  data-rel="tooltip" title="Manage Important Questions">
 				<div class="gallery-image">
 					<a href="/admin/configurations/impQuestions">
@@ -25,7 +25,7 @@
 				
 			</div><!-- /.gallery-item -->
 		</div>
-		<div class="col-lg-1 col-md-2 col-sm-3 col-xs-4">
+		<div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
 			<div class="gallery-item"  data-rel="tooltip" title="Manage Guidelines">
 				<div class="gallery-image">
 					<a href="/admin/configurations/guidelines">
@@ -35,7 +35,7 @@
 			</div><!-- /.gallery-item -->
 		</div>
 
-		<div class="col-lg-1 col-md-2 col-sm-3 col-xs-4">
+		<div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
 			<div class="gallery-item"  data-rel="tooltip" title="Manage Accreditations">
 				<div class="gallery-image">
 					<a href="/admin/configurations/accreditation">
@@ -47,15 +47,22 @@
 			</div><!-- /.gallery-item -->
 		</div>
 
-		<div class="col-lg-1 col-md-2 col-sm-3 col-xs-4">
+		<div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
 			<div class="gallery-item" data-rel="tooltip" title="Manage Mock Tests">
 				<div class="gallery-image">
 					<a href="/admin/configurations/mocktest">
 						<img src="/assets/img/icons/mocktest.png" alt="" class="img img-responsive" >
 					</a>
 				</div>
-
-				
+			</div><!-- /.gallery-item -->
+		</div>
+		<div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+			<div class="gallery-item" data-rel="tooltip" title="Manage Glossary">
+				<div class="gallery-image">
+					<a href="/admin/configurations/glossary">
+						<img src="/assets/img/icons/glossary.png" alt="" class="img img-responsive" >
+					</a>
+				</div>
 			</div><!-- /.gallery-item -->
 		</div>
 	</div>

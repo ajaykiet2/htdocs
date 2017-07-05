@@ -46,6 +46,7 @@
 		<div class="sidebar col-sm-4 col-md-3">
 			<?php $this->load->view("website/includes/widgets/enquire");?>
 			<?php $this->load->view("website/includes/widgets/accreditations");?>
+			<?php $this->load->view("website/includes/widgets/contact");?>
 		</div>
 	</div>
 </div>

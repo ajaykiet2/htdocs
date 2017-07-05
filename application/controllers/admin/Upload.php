@@ -167,4 +167,71 @@ class Upload extends CI_Controller {
 		}
 		unlink(FCPATH.'uploads/excel/'.$file_name);
 	}
+	
+	
+	public function mockTestQuestion(){
+		$configUpload['upload_path'] = FCPATH.'uploads/excel/';
+		$configUpload['allowed_types'] = 'xls|xlsx|csv';
+		$configUpload['max_size'] = '5000';
+		$this->load->library('upload', $configUpload);
+		if($this->upload->do_upload('file_to_upload')){			
+			$upload_data = $this->upload->data();
+			$file_name = $upload_data['file_name'];
+			
+			$objReader= PHPExcel_IOFactory::createReader('Excel2007');
+			
+			$objReader->setReadDataOnly(true); 
+			
+			$objPHPExcel=$objReader->load(FCPATH.'uploads/excel/'.$file_name);	
+			
+			$courseID = $this->input->post("courseID");
+			$assessmentID = $this->input->post("assessmentID");
+			$questionSets = $this->input->post("questionSets");
+			$totalQuestions = $this->input->post("totalQuestions");
+			
+			$response = array(
+				'uploaded' => true,
+				'message' => 'Questions Uploaded Successfully!'
+			);
+			
+			for($setIdx=1; $setIdx <= $questionSets; $setIdx++){
+				$this->assessment->deleteSet($assessmentID,$setIdx);
+				$totalrows=$objPHPExcel->setActiveSheetIndex($setIdx-1)->getHighestRow();
+				if($totalrows < $totalQuestions){
+					$response['uploaded'] = false;
+					$response['message'] = "Question are less than ".$totalQuestions." for set ".$setIdx.".";
+					break;
+				}
+				$objWorksheet=$objPHPExcel->setActiveSheetIndex($setIdx-1); 
+				
+				$questionData = array();
+				
+				for($i=2;$i<=$totalQuestions+1;$i++){
+					
+					$questionData = array(
+						'assessmentID' => $assessmentID,
+						'question' => $objWorksheet->getCellByColumnAndRow(0,$i)->getValue(),
+						'option_1' => $objWorksheet->getCellByColumnAndRow(1,$i)->getValue(),
+						'option_2' => $objWorksheet->getCellByColumnAndRow(2,$i)->getValue(),
+						'option_3' => $objWorksheet->getCellByColumnAndRow(3,$i)->getValue(),
+						'option_4' => $objWorksheet->getCellByColumnAndRow(4,$i)->getValue(),
+						'answer' => $objWorksheet->getCellByColumnAndRow(5,$i)->getValue(),
+						'weight' => $objWorksheet->getCellByColumnAndRow(6,$i)->getValue(),
+						'questionSet' => $setIdx,
+					);
+				
+					$this->assessment->addQuestion($questionData);
+				}
+			}
+			
+			print json_encode($response);
+			
+		}else{
+			print json_encode( array(
+				'uploaded' => false,
+				'message' => $this->upload->display_errors()
+			));
+		}
+		unlink(FCPATH.'uploads/excel/'.$file_name);
+	}
 }

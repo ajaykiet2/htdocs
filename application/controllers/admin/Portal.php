@@ -22,7 +22,8 @@ class Portal extends CI_Controller {
 			'chepter',
 			'slide',
 			'assessment',
-			'guideline'
+			'guideline',
+			'glossary'
 		));
 		
 		if(!$this->_isAdmin()){
@@ -278,6 +279,18 @@ class Portal extends CI_Controller {
 			break;
 			default: $this->load->view('admin/error404', $data);
 		}
+		#---------------------------------------------------
+		return;
+	}
+	
+	#==============================================================
+	# Glossary action start
+	public function glossary(){
+		#==================================================
+		$data['env'] =  $this->environment->load('admin');
+		$data['glossary'] =  $this->glossary->getAll();
+		
+		$this->load->view('admin/glossary',$data);
 		#---------------------------------------------------
 		return;
 	}

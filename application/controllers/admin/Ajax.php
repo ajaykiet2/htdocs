@@ -20,7 +20,8 @@ class Ajax extends CI_Controller {
 			'slide',
 			'assessment',
 			'report',
-			'guideline'
+			'guideline',
+			'glossary'
 		));
 		#loading other modules
 		#--------------
@@ -723,7 +724,71 @@ class Ajax extends CI_Controller {
 		}
 	}
 	
-	
+	public function glossaryAction(){
+		$action = $this->input->post("action");
+		
+		switch($action){
+			case "addNew":
+				$this->form_validation->set_error_delimiters('', '');
+				$this->form_validation->set_rules("title", "Title", "trim|required");
+				$this->form_validation->set_rules("description", "Description", "trim|required");
+				if($this->form_validation->run() == FALSE){
+					echo json_encode( array(
+						'status' => false,
+						'message' => "<p class='text-danger'>".implode('!</br>',explode('.', validation_errors()))."</p>"
+					));
+					return;
+				}else{
+					
+					$inputs = array(
+						'title' => $this->input->post("title"),
+						'description' => $this->input->post("description")
+					);
+					
+					if($this->glossary->add($inputs)){
+						echo json_encode( array(
+							'status' => true,
+							'message' => "Glossary Added Successfully!"
+						));
+					}else{
+						echo json_encode( array(
+							'status' => false,
+							'message' => "Unable to add glossary!"
+						));
+					}
+				}
+			break;
+			case "delete":
+				$this->form_validation->set_error_delimiters('', '');
+				$this->form_validation->set_rules("glossaryID", "Correct Data", "trim|required|numeric");
+				if($this->form_validation->run() == FALSE){
+					echo json_encode( array(
+						'status' => false,
+						'message' => "<p class='text-danger'>".implode('!</br>',explode('.', validation_errors()))."</p>"
+					));
+					return;
+				}else{
+					$glossaryID =  $this->input->post("glossaryID");
+					$inputs = array(
+						'glossaryID' => $this->input->post("glossaryID")
+					);
+					if($this->glossary->delete($glossaryID)){
+						echo json_encode( array(
+							'status' => true,
+							'message' => "Glossary Deleted Successfully!"
+						));
+					}else{
+						echo json_encode( array(
+							'status' => false,
+							'message' => "Unable to delete glossary!"
+						));
+					}
+				}
+			break;
+			
+			default:
+		}
+	}
 	
 	public function galleryAction(){
 		$action = $this->input->post("action");
@@ -1161,7 +1226,7 @@ class Ajax extends CI_Controller {
 				$this->form_validation->set_rules("designation", "Designation", "trim|required");
 				$this->form_validation->set_rules("address", "Address", "trim|required");
 				$this->form_validation->set_rules("panCard", "PAN Card", "trim|required|exact_length[10]");
-				$this->form_validation->set_rules("aadharCard", "Aadhar Card", "trim|required|exact_length[12]");
+				$this->form_validation->set_rules("aadharCard", "Aadhaar Card", "trim|required|exact_length[12]");
 				$this->form_validation->set_rules("companyID", "Company", "trim|required");
 				$this->form_validation->set_rules("departmentID", "Department", "trim|required");
 				

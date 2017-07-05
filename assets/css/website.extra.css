@@ -1,6 +1,6 @@
 .header-edge{
 	background:url(../img/banners/edge.jpg);
-	background-repeat: no-repeat;
+	background-repeat:repeat-x;
 	padding:20px; 
 	color:#FFF;
 	background-position: 0 70%; 

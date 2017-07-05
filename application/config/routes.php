@@ -104,9 +104,11 @@ $route['admin/ajax/assessmentAction'] = 'admin/ajax/assessmentAction';
 
 $route['admin/ajax/guidelineAction'] = 'admin/ajax/guidelineAction';
 $route['admin/ajax/galleryAction'] = 'admin/ajax/galleryAction';
+$route['admin/ajax/glossaryAction'] = 'admin/ajax/glossaryAction';
 $route['admin/configurations/guidelines/new'] = 'admin/portal/guideline';
 $route['admin/configurations/guidelines/edit/(:any)'] = 'admin/portal/guideline';
 $route['admin/configurations/guidelines/view/(:any)'] = 'admin/portal/guideline';
+$route['admin/configurations/glossary'] = 'admin/portal/glossary';
 																						#
 $route['admin/upload/chepterQuestion'] = 'admin/upload/chepterQuestion';                #
 $route['admin/upload/assessmentQuestion'] = 'admin/upload/assessmentQuestion';          #
@@ -137,6 +139,7 @@ $route['employee/faq/(:num)'] = 'employee/portal/faq';								#
 $route['employee/course/stop'] = 'employee/portal/stopCourse'; 	  					#
 $route['employee/course/start'] = 'employee/portal/startCourse'; 	  				#
 $route['employee/course/(:any)'] = 'employee/portal/courseDetail';					#
+$route['employee/portal/employeeAction'] = 'employee/portal/employeeAction';					#
 
 $route['employee/chepter/(:any)/(:any)'] = 'employee/portal/chepterDetail';			#
 

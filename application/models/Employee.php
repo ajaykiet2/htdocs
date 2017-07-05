@@ -190,6 +190,16 @@ class Employee extends CI_Model{
 		return false;
 	}
 	
+	public function isValidPassword($employeeID, $password){
+		$password = md5($password);
+		$result = $this->db->get_where('employee', array('employeeID'=>$employeeID, 'password' => $password));
+		if ($result->num_rows() > 0){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
 	public function email_exists($email){
 		$result = $this->db->get_where('employee', array('email'=>$email));
 		if ($result->num_rows() > 0){

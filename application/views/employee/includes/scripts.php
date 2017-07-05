@@ -18,10 +18,106 @@
 <script type="text/javascript" src="/assets/libraries/pace/pace.min.js"></script>
 <script type="text/javascript" src="/assets/js/hrd-foundation-admin.js"></script>
 <script type="text/javascript" src="/assets/js/notify.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.form.min.js"></script>
 <script type="text/javascript" src="/assets/js/employee/employee.js"></script>
 <script>
 jQuery(document).bind("contextmenu cut copy selectstart",function(e){
     e.preventDefault(); return false;
 });
+
+$("#glossaryTable").DataTable();
 </script>
 
+<!-- Update User Profile -->
+<script>
+$("#editProfile").on("click",function(){
+	$("#updatePasswordBox").hide();
+	$("#editProfileBox").show();
+});
+$("#updatePassword").on("click",function(){
+	$("#editProfileBox").hide();
+	$("#updatePasswordBox").show();
+});
+$(".closeUpdatePasswordBox").click(function(){
+	$("#updatePasswordBox").hide();
+});
+$(".closeEditProfileBox").click(function(){
+	$("#editProfileBox").hide();
+});
+$("#updatePasswordForm").ajaxForm({
+	success: function(response){
+		response = JSON.parse(response);
+		if(response.status){
+			$.alert({
+				icon : "fa fa-check",
+				title: "Success!",
+				content: response.message,
+				type: "blue",
+				buttons:{
+					ok: {
+						text: 'OK',
+						btnClass: 'btn-secondary',
+						keys: ['enter'],
+						action: function(){
+							window.location.reload();
+						}
+					}
+				}
+			});
+		}else{
+			$.alert({
+				icon : "fa fa-exclamation-triangle",
+				title: "Sorry!",
+				content: response.message,
+				type: "blue",
+				buttons:{
+					ok: {
+						text: 'OK',
+						btnClass: 'btn-secondary',
+						keys: ['enter'],
+						action: function(){}
+					}
+				}
+			});
+		}
+	}
+});
+$("#updateProfileForm").ajaxForm({
+	success: function(response){
+		response = JSON.parse(response);
+		if(response.status){
+			$.alert({
+				icon : "fa fa-check",
+				title: "Success!",
+				content: response.message,
+				type: "blue",
+				buttons:{
+					ok: {
+						text: 'OK',
+						btnClass: 'btn-secondary',
+						keys: ['enter'],
+						action: function(){
+							window.location.reload();
+						}
+					}
+				}
+			});
+		}else{
+			$.alert({
+				icon : "fa fa-exclamation-triangle",
+				title: "Sorry!",
+				content: response.message,
+				type: "red",
+				buttons:{
+					ok: {
+						text: 'OK',
+						btnClass: 'btn-secondary',
+						keys: ['enter'],
+						action: function(){}
+					}
+				}
+			});
+		}
+	}
+});
+</script>
