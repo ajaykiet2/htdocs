@@ -40,7 +40,7 @@
 	<div class="col-sm-6 col-md-3 col-xs-12">
         <div class="module">
             <div class="module-info center vertical-align">
-                Duration / Day 
+                Duration
             </div><!-- /.module-info -->
 
             <div class="module-content vertical-align">

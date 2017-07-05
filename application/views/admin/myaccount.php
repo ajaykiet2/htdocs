@@ -1,3 +1,4 @@
+<?php $this->load->view("admin/includes/header");?>
 <div class="row">
 	<div class="col-sm-3"></div>
 	<div class="col-sm-6">
@@ -41,7 +42,7 @@
 			<div class="module-content">
 				<h4 class="pull-left" ><strong>Update Information</strong></h4>
 				<button type="button" class="close pull-right closeEditProfileBox"><span>&times;</span></button>
-				<form action="/employee/portal/employeeAction" id="updateProfileForm" method="POST" class="form-horizontal">
+				<form action="/admin/ajax/myaccountAction" id="updateProfileForm" method="POST" class="form-horizontal">
 					<input type="hidden" name="action" value="updateProfile">
 					<div class="form">
 						<div class="form-body">
@@ -94,7 +95,7 @@
 			<div class="module-content">
 				<h4 class="pull-left" ><strong>Update Password</strong></h4>
 				<button type="button" class="close pull-right closeUpdatePasswordBox" ><span>&times;</span></button>
-				<form action="/employee/portal/employeeAction" id="updatePasswordForm" method="POST" class="form-horizontal">
+				<form action="/admin/ajax/myaccountAction" id="updatePasswordForm" method="POST" class="form-horizontal">
 					<input type="hidden" name="action" value="updatePassword">
 					<div class="form">
 						<div class="form-body">
@@ -106,7 +107,7 @@
 							</div>
 							<div class="form-group">
 								<div class="col-md-12">
-									<input type="password"  name="new_password" placeholder="New Password" class="form-control">
+									<input type="password" name="new_password" placeholder="New Password" class="form-control">
 									<span class="help-block"></span>
 								</div>
 							</div> 
@@ -128,3 +129,6 @@
 	</div>
 	<div class="col-sm-3"></div>
 </div>
+<?php $this->load->view("admin/includes/scripts");?>
+<script type="text/javascript" src="/assets/js/myaccount.js"></script>
+<?php $this->load->view("admin/includes/footer");?>

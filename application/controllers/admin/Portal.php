@@ -255,7 +255,7 @@ class Portal extends CI_Controller {
 		#---------------------------------------------------
 		switch($action){
 			case "new":
-				$this->load->view('admin/new_guidline',$data);
+				$this->load->view('admin/new_guideline',$data);
 			break;
 			case "edit":
 				$guidelineID = $this->encrypt->decode($this->uri->segment(5));
@@ -281,6 +281,20 @@ class Portal extends CI_Controller {
 		}
 		#---------------------------------------------------
 		return;
+	}
+	
+	#Function to fetch account Info
+	public function account(){
+		$env = $this->environment->load('admin');
+		$employee = $this->employee->load($env['loggedInEmployee']->employeeID);
+		if(!empty($employee)) {
+			unset($employee->password);
+		}
+		$data = array(
+			"env" => $env,
+			'employee' => $employee,
+		);
+		$this->load->view('admin/myaccount', $data);
 	}
 	
 	#==============================================================

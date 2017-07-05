@@ -17,5 +17,32 @@
         </div>
     </div>
 	<?php $this->load->view("employee/includes/scripts");?>
+	<script>
+	$(document).ready(function(){
+		$(document).ajaxStart(function() {
+			$('body').loading({
+				overlay: true,
+				width: 100,
+				circles: 3,
+			});
+			$('body').loading("show");
+		});
+		$( document ).ajaxError(function() {
+			$('body').loading("hide");
+			$.alert({
+				type: "red",
+				icon: "fa fa-exclamation-triangle",
+				title: "Error!",
+				content: "Not Connected to internet!, Please check it and try again."
+			});
+		});
+		$(document).ajaxComplete(function() {
+			$('body').loading("hide");
+		});
+	
+		$("[data-rel=tooltip]").tooltip();
+
+	});
+	</script>
 </body>
 </html>

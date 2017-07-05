@@ -74,7 +74,10 @@ $route['admin/ajax/departmentAction'] = 'admin/ajax/departmentAction';          
 $route['admin/employee'] = 'admin/portal/employee';                                     #
 $route['admin/employee/(:any)'] = 'admin/portal/employeeDetail';                        #
 $route['admin/ajax/populateEmployees'] = 'admin/ajax/populateEmployees';                #
-$route['admin/ajax/employeeAction'] = 'admin/ajax/employeeAction';                      #
+$route['admin/ajax/employeeAction'] = 'admin/ajax/employeeAction';  
+
+$route['admin/account'] = 'admin/portal/account';              						      #
+$route['admin/ajax/myaccountAction'] = 'admin/ajax/myaccountAction';                      #
 //--------------------------------------------------------------------------------------#
 $route['admin/courses'] = 'admin/portal/course';                                        #
 $route['admin/courses/(:num)'] = 'admin/portal/course';                                 #

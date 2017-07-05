@@ -796,8 +796,8 @@ class Ajax extends CI_Controller {
 		switch($action){
 			case "new":
 				$this->form_validation->set_error_delimiters('', '');
-				$this->form_validation->set_rules("title", "Gallery Title", "trim|required");
-				$this->form_validation->set_rules("name", "Gallery Name", "trim|required");
+				$this->form_validation->set_rules("title", "Gallery Title", "trim|required|max_length[40]");
+				$this->form_validation->set_rules("name", "Gallery Name", "trim|required|max_length[25]");
 				$this->form_validation->set_rules("shortDescription", "Overview", "trim|required|min_length[50]|max_length[250]");	
 				$this->form_validation->set_rules("fullDescription", "Full Description", "trim|required|min_length[100]");
 				if($this->form_validation->run() == FALSE){
@@ -1649,7 +1649,101 @@ class Ajax extends CI_Controller {
 			break;
 			default:
 		}
-		
 	}
 	
+	public function myaccountAction(){
+		$data['env'] = $this->environment->load('admin');
+		if($this->input->is_ajax_request()){
+			$action = $this->input->post("action");
+			
+			switch($action){
+				case "updatePassword":
+				$this->form_validation->set_error_delimiters('', '');
+				$this->form_validation->set_rules("password", "Old Password", "trim|required");
+				$this->form_validation->set_rules("new_password", "New Password", "trim|required|min_length[8]");
+				$this->form_validation->set_rules("re_password", "Repeat Password", "trim|required|matches[new_password]");					
+				if($this->form_validation->run() == FALSE){
+					echo json_encode( array(
+						'status' => false,
+						'message' => "<p class='text-danger'>".implode('!</br>',explode('.', validation_errors()))."</p>"
+					));
+					return;
+				}else{
+					$password = $this->input->post("password");
+					$empID = $this->session->userdata('employeeID');
+					
+					if($this->employee->isValidPassword($empID,$password)){
+						$password = $this->input->post("new_password");
+						if($this->employee->changePassword($empID,$password)){
+							echo json_encode( array(
+								'status' => true,
+								'message' => "Your password has been successfully changed!"
+							));
+						}else{
+							echo json_encode( array(
+								'status' => false,
+								'message' => "Unable to change password"
+							));
+						}
+					}else{
+						echo json_encode( array(
+							'status' => false,
+							'message' => "Incorrect Old Password"
+						));
+					}
+				}
+				break;
+				
+				case "updateProfile":
+				
+				$this->form_validation->set_error_delimiters('', '');
+				$this->form_validation->set_rules("name", "Name", "trim|required");
+				$this->form_validation->set_rules("mobile", "Mobile", "trim|required|exact_length[10]|numeric");
+				$this->form_validation->set_rules("address", "Address", "trim|required");
+				$this->form_validation->set_rules("panCard", "PAN Card", "trim|required|exact_length[10]");
+				$this->form_validation->set_rules("aadharCard", "Aadhaar Card", "trim|required|exact_length[12]");
+				
+				if($this->form_validation->run() == FALSE){
+				
+					echo json_encode( array(
+						'status' => false,
+						'message' => "<p class='text-danger'>".implode('!</br>',explode('.', validation_errors()))."</p>"
+					));
+					return;
+				}else{
+					$empID = $this->session->userdata('employeeID');
+					
+					$data = array(
+						"name" => $this->input->post("name"),
+						"mobile" => $this->input->post("mobile"),
+						"address" => $this->input->post("address"),
+						"panCard" => $this->input->post("panCard"),
+						"aadharCard" => $this->input->post("aadharCard"),
+					);
+					if($this->employee->update($empID, $data)){
+						echo json_encode( array(
+							'status' => true,
+							'message' => "Successfully Updated"
+						));
+					}else{
+						echo json_encode( array(
+							'status' => false,
+							'message' => "Unable to update"
+						));
+					}
+				}
+			
+				break;
+				
+				default:
+			}
+		}else{
+			echo json_encode( array(
+				'status' => false,
+				'message' => "Unautherized Request!"
+			));
+		}
+		
+		
+	}
 }

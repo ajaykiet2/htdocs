@@ -1,7 +1,9 @@
 <?php $totleCourses = isset($courses) ? count($courses) : 0; ?>
 <h1 class="page-header">Courses <span style="color:#999;">(<?=$totleCourses;?>)</span></h1>
 <div class="row" id="courseContainer">
-<?php if(!empty($courses)): foreach($courses as $course):?>
+<?php if(!empty($courses)): foreach($courses as $course):
+	$expiredIn = $course->maxDays - daysFromToday($course->timeStamp);
+?>
 	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
 		<div class="man">
 			<div class="man-content">
@@ -12,7 +14,11 @@
 				<ul>
 					<li>Duration: <a href="javascript:void(0)"><?=timeToDecimal($course->duration);?> Hours</a></li>
 					<li>Time Spent: <a href="javascript:void(0)"><?=$course->timeSpent;?></a></li>
+					<?php if($expiredIn > 0):?>
 					<li>Expired In: <a href="javascript:void(0)"><?=($course->maxDays - daysFromToday($course->timeStamp));?> Days</a></li>
+					<?php else:?>
+					<li>Expired In: <a href="javascript:void(0)">Already Expired</a></li>
+					<?php endif;?>
 				</ul>
 			</div>
 			<span class="pull-right">

@@ -70,7 +70,7 @@
 						</li>
 						
 						<li class="">
-							<a href=""><strong><i class="fa fa-lock"></i></strong> <span>Account</span></a>
+							<a href="/admin/account"><strong><i class="fa fa-lock"></i></strong> <span>Account</span></a>
 						</li>
 
 						<li>

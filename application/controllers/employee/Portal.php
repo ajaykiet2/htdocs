@@ -269,8 +269,6 @@ class Portal extends CI_Controller {
 		}else{
 			$this->viewPage('employee/error404', $data);
 		}
-		
-		
 	}
 	
 	

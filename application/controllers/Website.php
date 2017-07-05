@@ -101,7 +101,7 @@ class Website extends CI_Controller {
 	public function gallery(){
 		$pageIdx = ($this->uri->segment(3)) ? $this->uri->segment(3) : 1;
 		$pageNum = ($pageIdx == (int) $pageIdx) ? (int) $pageIdx : 0;
-		$limit = 9;
+		$limit = 12;
 		$offset = ($pageNum - 1) * $limit;
 		
 		$params = array(
