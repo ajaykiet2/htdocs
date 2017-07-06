@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+/*! normalize.css v3.0.2 | MIT License | git.io/normalize      transition: width 0.5s cubic-bezier(0.02, 0.04, 0, 0.92) 0.75s;   */
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -7432,7 +7432,9 @@ a {
         body.open .admin-navigation ul.menu li:not(.avatar) a:hover:before {
           width: 100%; }
         body.open .admin-navigation ul.menu li:not(.avatar) a {
-          width: 240px; }
+          width: 240px; 
+		  transition: width 0.5s cubic-bezier(0.02, 0.04, 0, 0.92) 0.75s;
+		}
           @media (max-width: 767px) {
             body.open .admin-navigation ul.menu li:not(.avatar) a {
               width: 60px !important; } }

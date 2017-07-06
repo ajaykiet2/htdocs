@@ -14,7 +14,7 @@
 	<br>
 	<br>
 	Simply click on the button to set a new password:<br><br>
-	<a href="<?=base_url("resetPassword?token=$token");?>" style="display: inline-block; margin-bottom: 0;font-weight: 600;padding: 12px 28px;background-color: #E91E63; border-radius: 2px; box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26); color: #fff; font-size: 13px; overflow: hidden; position: relative; text-transform: uppercase; transition: all .15s linear;text-decoration:none ">Reset Password</a>
+	<a href="<?=base_url("login/resetPassword?token=$token");?>" style="display: inline-block; margin-bottom: 0;font-weight: 600;padding: 12px 28px;background-color: #E91E63; border-radius: 2px; box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26); color: #fff; font-size: 13px; overflow: hidden; position: relative; text-transform: uppercase; transition: all .15s linear;text-decoration:none ">Reset Password</a>
 	<br>
 	<br>
 	<small>Please do not try to redirect from the page.</small><br><br><br>

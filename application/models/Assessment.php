@@ -38,33 +38,33 @@ class Assessment extends CI_Model {
 	# Assessment question related functions
 	
 	public function addQuestion($data){
-		return $this->db->insert("assessmentQuestion", $data);
+		return $this->db->insert("assessmentquestion", $data);
 	}
 	
 	public function updateQuestion($assessmentQuestionID, $inputs){
 		$this->db->where("assessmentQuestionID", $assessmentQuestionID);
-		return $this->db->update("assessmentQuestion", $inputs);
+		return $this->db->update("assessmentquestion", $inputs);
 	}
 	
 	public function deleteQuestion($conditions){
 		foreach($conditions as $column => $value){
 			$this->db->where($column,$value);
 		}
-		return $this->db->delete("assessmentQuestion");
+		return $this->db->delete("assessmentquestion");
 	}
 	
 	public function loadQuestion($questionID){
-		return $this->db->get_where("assessmentQuestion",array("assessmentQuestionID" => $questionID))->result()[0];
+		return $this->db->get_where("assessmentquestion",array("assessmentQuestionID" => $questionID))->result()[0];
 	}
 	
 	public function getQuestions($assessmentID){
-		return $this->db->get_where("assessmentQuestion",array('assessmentID' => $assessmentID))->result();
+		return $this->db->get_where("assessmentquestion",array('assessmentID' => $assessmentID))->result();
 	}
 	
 	public function deleteSet($assessmentID, $setNum){
 		$this->db->where("assessmentID", $assessmentID);
 		$this->db->where("questionSet", $setNum);
-		return $this->db->delete("assessmentQuestion");
+		return $this->db->delete("assessmentquestion");
 	}
 	
 	public function getQuestionSet($assessmentID, $questionSet){
@@ -76,7 +76,7 @@ class Assessment extends CI_Model {
 	}
 	
 	public function getQuestionSets($assessmentID){
-		$questions = $this->db->get_where("assessmentQuestion",array('assessmentID' => $assessmentID))->result();
+		$questions = $this->db->get_where("assessmentquestion",array('assessmentID' => $assessmentID))->result();
 		
 		$questGroup = array();
 		if(!empty($questions)){
