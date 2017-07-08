@@ -89,7 +89,7 @@ class Login extends CI_Controller {
 				$token = $this->employee->forgotPassword($emailID);
 				if($token != null){
 					$data= array(
-						'user' => "Ajay Kumar",
+						'user' => "User",
 						"emailID" => $emailID,
 						"token" => $token,
 						'logo'	=> base_url('assets/img/hrdlogo.jpg'),
