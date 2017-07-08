@@ -6,7 +6,7 @@
 	foreach($guidelines as $guideline):				
 		$collapse = ($i == 0) ? 'in' : '';
 ?>
-<div class="panel" style="border-top:3px solid #EC407A;border-radius:0;">
+<div class="panel fr-view" style="border-top:3px solid #EC407A;border-radius:0;">
 	<div class="panel-heading accordion-toggle" data-toggle="collapse" data-parent="#guidlines" data-target="#guidline_<?=$guideline->guidlineID;?>" area-expanded="true">
 		 <h2 class="panel-title" style="cursor:pointer" title="Click to open/close"><?=$guideline->title;?></h2>
 	</div>

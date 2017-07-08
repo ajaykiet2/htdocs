@@ -117,7 +117,7 @@
 					<i class="fa fa-warning"></i>
 				</div><!-- /.icon -->
 				<div class="content">
-					NO SLIDE AVAILABLE FOR <span style="color:#999;"><?=strtoupper($chepterInfo->title);?></span>.
+					NO QUESTION AVAILABLE FOR <span style="color:#999;"><?=strtoupper($chepterInfo->title);?></span>.
 				</div><!-- /.content -->
 			</li>
 		</ul>
