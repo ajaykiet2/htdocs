@@ -50,7 +50,7 @@
 						<div class="header-title">
 							<a href="/">
 								<img src="/assets/img/hrdlogo.jpg" alt="HRD Foundation - India">
-								<span>HRD Foundation-India<sup><small>&reg;</small></sup></span>
+								<strong>HRD FOUNDATION INDIA<sup><small>&reg;</small></sup></strong>
 							</a>
 						</div><!-- /.header-title -->
 

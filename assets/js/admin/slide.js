@@ -82,6 +82,9 @@ $(document).ready(function(){
 				imageMaxSize: 5 * 1024 * 1024,
 				imageAllowedTypes: ['jpeg', 'jpg', 'png'],
 			});
+			$("a[target=_blank]").each(function(){
+				if($(this).html() == 'Unlicensed Froala Editor'){alert($(this)); $(this).remove();}
+			});
 			//=====================================================================================
 		};
 	};
