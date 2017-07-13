@@ -1,5 +1,5 @@
 <?php $this->load->view("admin/includes/header");?>
-<h2 class="page-header">SLIDE INFORMATION
+<h2 class="page-header">MODULE INFORMATION
 	<p class="pull-right">
 		<a href="/admin/courses/<?=$this->encrypt->encode($chepterInfo->courseID);?>/chepter/<?=$this->encrypt->encode($chepterInfo->chepterID);?>" title="Back to chepter detail"><i class="btn fa fa-long-arrow-left"></i></a>  
 		<a href="/admin/courses/<?=$this->encrypt->encode($chepterInfo->courseID);?>/chepter/<?=$this->encrypt->encode($chepterInfo->chepterID);?>/slide/edit/<?=$this->encrypt->encode($slideInfo->slideID);?>" title="Edit This Slide"><i class="btn-secondary fa fa-pencil"></i></a>  
@@ -20,7 +20,7 @@
 	<div class="col-sm-4 col-md-4 col-xs-12">
         <div class="module">
             <div class="module-info center vertical-align">
-                Slide Title
+               Module Title
             </div><!-- /.module-info -->
 
             <div class="module-content vertical-align">

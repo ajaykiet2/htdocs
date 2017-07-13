@@ -587,9 +587,9 @@ class Ajax extends CI_Controller {
 		switch($action){
 			case "new":
 				$this->form_validation->set_error_delimiters('', '');
-				$this->form_validation->set_rules("title", "Slide Title", "trim|required");
-				$this->form_validation->set_rules("sequence", "Slide Sequence", "trim|required|numeric");
-				$this->form_validation->set_rules("content", "Slide Content", "trim|required");
+				$this->form_validation->set_rules("title", "Module Title", "trim|required");
+				$this->form_validation->set_rules("sequence", "Module Sequence", "trim|required|numeric");
+				$this->form_validation->set_rules("content", "Module Content", "trim|required");
 				$this->form_validation->set_rules("chepterID", "Chepter", "trim|required|numeric");
 				if($this->form_validation->run() == FALSE){
 					echo json_encode( array(
@@ -609,7 +609,7 @@ class Ajax extends CI_Controller {
 					if($this->slide->save($inputs)){
 						echo json_encode( array(
 							'status' => true,
-							'message' => "Slide Saved Successfully!"
+							'message' => "Module Saved Successfully!"
 						));
 					}else{
 						echo json_encode( array(
@@ -621,9 +621,9 @@ class Ajax extends CI_Controller {
 			break;
 			case "edit":
 				$this->form_validation->set_error_delimiters('', '');
-				$this->form_validation->set_rules("title", "Slide Title", "trim|required");
-				$this->form_validation->set_rules("sequence", "Slide Sequence", "trim|required|numeric");
-				$this->form_validation->set_rules("content", "Slide Content", "required");
+				$this->form_validation->set_rules("title", "Module Title", "trim|required");
+				$this->form_validation->set_rules("sequence", "Module Sequence", "trim|required|numeric");
+				$this->form_validation->set_rules("content", "Module Content", "required");
 				$this->form_validation->set_rules("chepterID", "Chepter", "trim|required|numeric");
 				if($this->form_validation->run() == FALSE){
 					echo json_encode( array(
@@ -642,12 +642,12 @@ class Ajax extends CI_Controller {
 					if($this->slide->update($slideID, $inputs)){
 						echo json_encode( array(
 							'status' => true,
-							'message' => "Slide Updated Successfully!"
+							'message' => "Module Updated Successfully!"
 						));
 					}else{
 						echo json_encode( array(
 							'status' => false,
-							'message' => "Unable to update slide!"
+							'message' => "Unable to update module!"
 						));
 					}
 				}

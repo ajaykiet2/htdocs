@@ -14,8 +14,8 @@
 			<th class="min-width nowrap">ID</th>
 			<th>Company Name</th>
 			<th>Contact Name</th>
-			<th>Contact Mobile</th>
-			<th>Contact Email</th>
+			<th>Mobile</th>
+			<th>Email</th>
 			<th class="nowrap">Actions</th>
 		</tr>
 	</thead>

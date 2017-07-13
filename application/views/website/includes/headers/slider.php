@@ -12,7 +12,7 @@
 		  <div class="col-md-6 col-xs-6">
 				<div class="header-call-to-action">
 					<div class="buttons pull-left">
-						<a href="/mocktest" class="btn btn-xl">Mock Test & Questions <small>Enhance your skills</small></a>
+						<a href="/contact" class="btn btn-xl">Contact for Training <small>We are here to help you</small></a>
 					</div>
 				</div>
 			  </div>
@@ -26,7 +26,7 @@
 			  <div class="col-md-6 col-xs-6">
 				<div class="header-call-to-action">
 					<div class="buttons pull-right">
-						<a href="/contact" class="btn btn-xl">Contact for Training <small>We are here to help you</small></a>
+						<a href="/mocktest" class="btn btn-xl">Mock Test & Questions <small>Enhance your skills</small></a>
 					</div>
 				</div>
 			  </div>

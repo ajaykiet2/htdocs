@@ -30,7 +30,7 @@
         </div><!--- /.module -->
     </div>
 </div>
-<h3 class="page-header"><span style="color:#999;">SLIDES FOR </span>"<?=strtoupper($chepterInfo->title);?>" 
+<h3 class="page-header"><span style="color:#999;">MODULE FOR </span>"<?=strtoupper($chepterInfo->title);?>" 
 	
 	<p class="pull-right"> 
 		<a href="/admin/courses/<?=$this->encrypt->encode($chepterInfo->courseID);?>/chepter/<?=$this->encrypt->encode($chepterInfo->chepterID);?>/slide/new" title="Add New Slide"><i class="btn-secondary fa fa-plus"></i></a> 
@@ -73,7 +73,7 @@
 					<i class="fa fa-warning"></i>
 				</div><!-- /.icon -->
 				<div class="content">
-					NO SLIDE AVAILABLE FOR <span style="color:#999;"><?=strtoupper($chepterInfo->title);?></span>.
+					NO MODULE AVAILABLE FOR <span style="color:#999;"><?=strtoupper($chepterInfo->title);?></span>.
 				</div><!-- /.content -->
 			</li>
 		</ul>

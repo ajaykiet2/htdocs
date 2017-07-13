@@ -26,7 +26,6 @@ class Employee extends CI_Model{
       FROM employee emp
 	  LEFT JOIN company comp USING(companyID)
       LEFT JOIN department dep USING(departmentID)    
-      WHERE emp.role = 'user'
     ) tempTable";
 	
     var $column_order = array(null,'employeeID', 'name','email','mobile','employeeCode','managerName','departmentName','companyName','designation','address','panCard','aadharCard'); 
@@ -157,9 +156,9 @@ class Employee extends CI_Model{
 		return ($emp->num_rows() > 0) ? $emp->result()[0] : null;
 	}
 	
-	public function getInfo($empID){
+	public function getInfo($employeeID){
 		$this->db->from($this->table);
-		$this->db->where('employeeID',$empID);
+		$this->db->where("employeeID", $employeeID);	
 		$emp = $this->db->get();
 		return ($emp->num_rows() > 0) ? $emp->result()[0] : null;
 	}

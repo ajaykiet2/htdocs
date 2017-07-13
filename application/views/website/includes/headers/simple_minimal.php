@@ -22,9 +22,7 @@
 	<link rel="stylesheet" href="/assets/libraries/loader/jquery-loading.min.css"/>
 	<script type="text/javascript" src="/assets/libraries/loader/jquery-loading.js"></script>
 	<script type="text/javascript" src="/assets/libraries/jquery-confirm/jquery-confirm.min.js"></script>
-    
 </head>
-
 <body>
 <input type="hidden" id="csrfID" name="csrf_ID" value="<?=$this->security->get_csrf_hash();?>" />
 <div class="page-wrapper">
@@ -50,7 +48,7 @@
 						<div class="header-title">
 							<a href="/">
 								<img src="/assets/img/hrdlogo.jpg" alt="HRD Foundation - India">
-								<strong>HRD FOUNDATION INDIA<sup><small>&reg;</small></sup></strong>
+								<strong class="hidden-xs">HRD FOUNDATION - INDIA<sup><small>&reg;</small></sup></strong>
 							</a>
 						</div><!-- /.header-title -->
 
@@ -67,12 +65,10 @@
 									<nav>
 										<ul id="nav-main" class="nav nav-pills">
 											<?php foreach($env['menus'] as $menu):?>
-											<li class="important <?=$menu->class;?>">
-												<a href="<?=$menu->link;?>"><?=$menu->name;?></a>
-											</li>
+												<li class="important <?=$menu->class;?>">
+													<a href="<?=$menu->link;?>"><?=$menu->name;?></a>
+												</li>
 											<?php endforeach;?>
-											
-											
 										</ul><!-- /.nav -->
 									</nav>
 								</div><!-- /.nav-main-inner -->

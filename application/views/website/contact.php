@@ -35,7 +35,7 @@
 				</div><!-- /.row -->
 			</div><!-- /.col-* -->
 			<div class="col-sm-6">
-				<h2 class="mt0">Contact Form</h2>
+				<h2 class="mt0">Send Your Query</h2>
 				
 				<div class="box">
 					<form action="/contact" method="post" id="contactForm">

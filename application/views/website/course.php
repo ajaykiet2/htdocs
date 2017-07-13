@@ -1,5 +1,5 @@
 <?php $this->load->view('website/includes/headers/simple_minimal');?>
-<div class="header-edge"><div class="container">Our Courses</div></div>
+<div class="header-edge"><div class="container">Courses</div></div>
 <!-- end:header -->
 <!-- start:contents -->
 <div class="container">

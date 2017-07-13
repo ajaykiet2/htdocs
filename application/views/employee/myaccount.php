@@ -1,26 +1,34 @@
 <div class="row">
-	<div class="col-sm-3"></div>
-	<div class="col-sm-6">
+	<div class="col-sm-2"></div>
+	<div class="col-sm-8">
 		<div class="module">
 			<div class="module-content">
 				<h4><strong>Personal Information</strong></h4>
 				<div class="row">									
 					<ul class="not-found-links">
-						<li class="col-sm-6">
-							<strong>Name</strong> : <span><?=$employee->name;?></span>
-						</li>
-						<li class="col-sm-6">
-							<strong>Email</strong> : <span><?=$employee->email;?></span>
-						</li>
-						<li class="col-sm-6">
-							<strong>Mobile</strong> : <span><?=$employee->mobile;?></span>
-						</li>
-						<li class="col-sm-6">
-							<strong>Pan Card</strong> : <span><?=$employee->panCard;?></span>
-						</li>
-						<li class="col-sm-6">
-							<strong>Aadhaar Card</strong> : <span><?=$employee->aadharCard;?></span>
-						</li>
+						<div class="col-sm-6">
+							<li>
+								<strong>Name</strong> : <span><?=$employee->name;?></span>
+							</li>
+							<li>
+								<strong>Email</strong> : <span><?=$employee->email;?></span>
+							</li>
+							<li>
+								<strong>Mobile</strong> : <span><?=$employee->mobile;?></span>
+							</li>
+							
+						</div>
+						<div class="col-sm-6">
+							<li>
+								<strong>Pan Card</strong> : <span><?=$employee->panCard;?></span>
+							</li>
+							<li>
+								<strong>Aadhaar Card</strong> : <span><?=$employee->aadharCard;?></span>
+							</li>
+							<li>
+								<strong>Company</strong> : <span><?php echo ($employee->role != 'admin') ? $employee->companyName: "NO COMPANY FOR ADMIN";?></span>
+							</li>
+						</div>
 						<li class="col-sm-12">
 							<strong>address</strong> : <span><?=$employee->address;?></span>
 						</li>
@@ -32,11 +40,11 @@
 			</div><!-- /.module-content -->				
 		</div>
 	</div>
-	<div class="col-sm-3"></div>
+	<div class="col-sm-2"></div>
 </div>
 <div class="row">
-	<div class="col-sm-3"></div>
-	<div class="col-sm-6" style="display:none;" id="editProfileBox">
+	<div class="col-sm-2"></div>
+	<div class="col-sm-8" style="display:none;" id="editProfileBox">
 		<div class="module">
 			<div class="module-content">
 				<h4 class="pull-left" ><strong>Update Information</strong></h4>
@@ -85,11 +93,11 @@
 			</div><!-- /.module-content -->				
 		</div>
 	</div>
-	<div class="col-sm-3"></div>
+	<div class="col-sm-2"></div>
 </div>
 <div class="row">
-	<div class="col-sm-3"></div>
-	<div class="col-sm-6" style="display:none;" id="updatePasswordBox">
+	<div class="col-sm-2"></div>
+	<div class="col-sm-8" style="display:none;" id="updatePasswordBox">
 		<div class="module">
 			<div class="module-content">
 				<h4 class="pull-left" ><strong>Update Password</strong></h4>
@@ -106,7 +114,7 @@
 							</div>
 							<div class="form-group">
 								<div class="col-md-12">
-									<input type="password"  name="new_password" placeholder="New Password" class="form-control">
+									<input type="password" name="new_password" placeholder="New Password" class="form-control">
 									<span class="help-block"></span>
 								</div>
 							</div> 
@@ -126,5 +134,6 @@
 			</div><!-- /.module-content -->				
 		</div>
 	</div>
-	<div class="col-sm-3"></div>
+	<div class="col-sm-2"></div>
+</div>
 </div>

@@ -492,7 +492,7 @@ $.chepter = function(){
 			$.confirm({
 				icon: "fa fa-question-circle",
 				title: 'Confirmation!',
-				content: 'Are you sure want to delete slide',
+				content: 'Are you sure want to delete',
 				type: "blue",
 				buttons: {
 					ok: {

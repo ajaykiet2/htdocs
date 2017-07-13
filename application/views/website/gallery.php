@@ -6,7 +6,7 @@
 <div class="container">
 	<div class="row">
 		<div class="content col-sm-8 col-md-9">
-			<h1 class="page-header">Our Gallery</h1>
+			<h1 class="page-header">Gallery</h1>
 			<?php if(is_array($galleries)):?>
 				<div class="row">
 					<?php foreach($galleries as $gallery):?>

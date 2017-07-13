@@ -65,7 +65,7 @@ class Portal extends CI_Controller {
 	#Function to fetch guidlines
 	public function account(){
 		$env = $this->environment->load('employee');
-		$employee = $this->employee->load($env['loggedInEmployee']->employeeID);
+		$employee = $this->employee->getInfo($env['loggedInEmployee']->employeeID);
 		if(!empty($employee)) {
 			unset($employee->password);
 		}

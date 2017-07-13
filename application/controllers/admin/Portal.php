@@ -286,7 +286,7 @@ class Portal extends CI_Controller {
 	#Function to fetch account Info
 	public function account(){
 		$env = $this->environment->load('admin');
-		$employee = $this->employee->load($env['loggedInEmployee']->employeeID);
+		$employee = $this->employee->getInfo($env['loggedInEmployee']->employeeID);
 		if(!empty($employee)) {
 			unset($employee->password);
 		}

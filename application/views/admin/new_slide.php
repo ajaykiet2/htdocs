@@ -11,13 +11,13 @@ $slideData = (isset($slideInfo)) ? $slideInfo : (object)array(
 	<div class="col-sm-12 col-md-12 col-xs-12">
 		<div class="module">
 			<div class="text-center module-content vertical-align">
-				<h4>SLIDE FOR "<?=strtoupper($chepterInfo->title);?>"</h4>
+				<h4>MODULE FOR "<?=strtoupper($chepterInfo->title);?>"</h4>
 			</div><!-- /.module-content -->
 		</div><!--- /.module -->
 	</div>
 </div>
 
-<h2 class="page-header">SLIDE INFORMATION
+<h2 class="page-header">MODULE INFORMATION
 	<p class="pull-right">
 		<a href="/admin/courses/<?=$this->encrypt->encode($chepterInfo->courseID);?>/chepter/<?=$this->encrypt->encode($chepterInfo->chepterID);?>" title="Back to chepter detail"><i class="btn fa fa-long-arrow-left"></i></a>  
 	</p>
@@ -28,16 +28,16 @@ $slideData = (isset($slideInfo)) ? $slideInfo : (object)array(
 	<input type="hidden" name="slideID" value="<?=$slideData->slideID;?>">
 	<div class="box row">
 		<div class="form-group col-sm-6 col-xs-12">
-			<input class="form-control" name="title" type="text" placeholder="Slide Title" value="<?=$slideData->title;?>">
+			<input class="form-control" name="title" type="text" placeholder="Module Title" value="<?=$slideData->title;?>">
 		</div>
 		<div class="form-group col-sm-6 col-xs-12">
-			<input class="form-control" name="sequence" type="number" min="0" max="500" placeholder="Slide Sequence" value="<?=$slideData->sequence;?>">
+			<input class="form-control" name="sequence" type="number" min="0" max="500" placeholder="Module Sequence" value="<?=$slideData->sequence;?>">
 		</div>
 	</div>
 	<h2 class="page-header">CONTENTS</h2>  
 	<textarea class="text-small" name="content" id="content"><?=$slideData->content;?></textarea><hr>
 	<div class="center">
-		<span class="btn btn-xl" id="saveNewSlide" data-action="<?=$action;?>">Save Your Slide<small>You can edit it anytime</small></span>
+		<span class="btn btn-xl" id="saveNewSlide" data-action="<?=$action;?>">Save Your Module<small>You can edit it anytime</small></span>
 	</div>
 </form>
 

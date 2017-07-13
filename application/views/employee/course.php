@@ -15,9 +15,9 @@
 					<li>Duration: <a href="javascript:void(0)"><?=timeToDecimal($course->duration);?> Hours</a></li>
 					<li>Time Spent: <a href="javascript:void(0)"><?=$course->timeSpent;?></a></li>
 					<?php if($expiredIn > 0):?>
-					<li>Expired In: <a href="javascript:void(0)"><?=($course->maxDays - daysFromToday($course->timeStamp));?> Days</a></li>
+					<li>Expiry In: <a href="javascript:void(0)"><?=($course->maxDays - daysFromToday($course->timeStamp));?> Days</a></li>
 					<?php else:?>
-					<li>Expired In: <a href="javascript:void(0)">Already Expired</a></li>
+					<li>Expiry In: <a href="javascript:void(0)">Already Expired</a></li>
 					<?php endif;?>
 				</ul>
 			</div>
