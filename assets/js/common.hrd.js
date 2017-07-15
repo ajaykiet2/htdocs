@@ -35,3 +35,13 @@ $(document).ready(function(){
 	};
 	
 });
+function updateIndicator() {
+	if(navigator.onLine) {
+		$.notify("Connected To Internet");
+	}else{
+		$.notify("Please check your internet connection!");
+	}
+}
+
+window.addEventListener('online',  updateIndicator);
+window.addEventListener('offline', updateIndicator);

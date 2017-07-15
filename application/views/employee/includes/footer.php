@@ -27,15 +27,7 @@
 			});
 			$('body').loading("show");
 		});
-		$( document ).ajaxError(function() {
-			$('body').loading("hide");
-			$.alert({
-				type: "red",
-				icon: "fa fa-exclamation-triangle",
-				title: "Error!",
-				content: "Not Connected to internet!, Please check it and try again."
-			});
-		});
+		
 		$(document).ajaxComplete(function() {
 			$('body').loading("hide");
 		});
@@ -43,6 +35,17 @@
 		$("[data-rel=tooltip]").tooltip();
 
 	});
+	// Checking Internet Connection
+	function updateIndicator() {
+		if(navigator.onLine) {
+			$.notify("Connected To Internet");
+		}else{
+			$.notify("Please check your internet connection!");
+		}
+	}
+
+	window.addEventListener('online',  updateIndicator);
+	window.addEventListener('offline', updateIndicator);
 	</script>
 </body>
 </html>

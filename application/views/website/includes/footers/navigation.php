@@ -45,6 +45,7 @@
 
 <script type="text/javascript" src="/assets/libraries/jquery.scrollTo/jquery.scrollTo.min.js"></script>
 <script type="text/javascript" src="/assets/js/hrd-foundation.js"></script>
+<script type="text/javascript" src="/assets/js/notify.min.js"></script>
 
 <script>
 	$(document).ready(function(){
@@ -57,15 +58,7 @@
 			});
 			$('body').loading("show");
 		});
-		$( document ).ajaxError(function() {
-			$('body').loading("hide");
-			$.alert({
-				type: "red",
-				icon: "fa fa-exclamation-triangle",
-				title: "Error!",
-				content: "Not Connected to internet!, Please check it and try again."
-			});
-		});
+		
 		$(document).ajaxComplete(function() {
 			$('body').loading("hide");
 		});
@@ -73,7 +66,19 @@
 	
 	$('.carousel').carousel({
 		interval: 4000
-	})
+	});
+	
+	// Checking Internet Connection
+	function updateIndicator() {
+		if(navigator.onLine) {
+			$.notify("Connected To Internet");
+		}else{
+			$.notify("Please check your internet connection!");
+		}
+	}
+
+	window.addEventListener('online',  updateIndicator);
+	window.addEventListener('offline', updateIndicator);
 </script>
 
 </body>

@@ -23,7 +23,8 @@ class Portal extends CI_Controller {
 			'slide',
 			'assessment',
 			'guideline',
-			'glossary'
+			'glossary',
+			'mocktest'
 		));
 		
 		if(!$this->_isAdmin()){
@@ -398,6 +399,7 @@ class Portal extends CI_Controller {
 			break;
 			
 			case "mocktest":
+				$data['mocktests'] = $this->mocktest->getAll();
 				$this->load->view("admin/mocktest", $data);
 			break;
 			case "guidelines":

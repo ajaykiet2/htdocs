@@ -55,7 +55,6 @@
 </div>
 	<hr>
 	<h3 class="page-header"><span style="color:#999;">EXAMINATION QUESTIONS FOR </span>"<?=strtoupper($course->title);?>" 
-		
 		<p class="pull-right">
 			<a href="javascript:void(0)" id="uploadAssessmentQuestion" title="Upload question sets for this course">
 				<i class="btn-secondary fa fa-cloud-upload"></i>
@@ -64,12 +63,8 @@
 	</h3>
 	<?php if(!empty($questionSets)):?>
 	<div class="panel-group" id="examination">
-	<?php
-		foreach($questionSets as $setNum => $questions):
-	?>
+	<?php foreach($questionSets as $setNum => $questions):?>
 	<?php if(!empty($questions)): ?>
-	
-	
 	  <div class="panel" style="border-top:3px solid #EC407A;border-radius:0;">
 		<div class="panel-heading" data-toggle="collapse" data-parent="#examination" data-target="#collapse<?=$setNum;?>" area-expanded="true">
 		  <h4 class="panel-title">

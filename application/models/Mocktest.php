@@ -11,37 +11,38 @@ class Mocktest extends CI_Model{
 		parent::__construct();
 	}
 	
-	public function load($params){
-		$this->db->select('*');
-        $this->db->from('faq');
-        $this->db->order_by('timeStamp','desc');
-		
-		if(array_key_exists("start",$params) && array_key_exists("limit",$params)){
-            $this->db->limit($params['limit'],$params['start']);
-        }elseif(!array_key_exists("start",$params) && array_key_exists("limit",$params)){
-            $this->db->limit($params['limit']);
-        }
-        
-        $faqs = $this->db->get();
-        
-        return ($faqs->num_rows() > 0) ? $faqs->result(): FALSE;
+	public function getAll(){
+		$all = $this->db->get("mocktest")->result();
+		$mocktests = array();
+		foreach($all as $row){
+			if(!isset($mocktests[$row->name])) $mocktests[$row->name] = array();
+			array_push($mocktests[$row->name], $row);
+		}
+		return $mocktests;
 	}
 	
-	public function total(){
-		return $this->db->get('faq')->num_rows();
+	public function loadQuestion($questionID){
+		$this->db->where("id",$questionID);
+        $mocktest = $this->db->get("mocktest"); 
+        return ($mocktest->num_rows() > 0) ? $mocktest->result()[0]: null;
 	}
-	
-	public function add($data){
-		return $this->db->insert('faq',$data);
+
+	public function add($input){
+		return $this->db->insert_batch('mocktest',$input);
 	}
-	
+
 	public function delete($id){
-		$this->db->where('faqID', $id);
-		return $this->db->delete('faq');
+		$this->db->where('id', $id);
+		return $this->db->delete('mocktest');
+	}
+	
+	public function deleteTest($test){
+		$this->db->where("name",$test);
+		return $this->db->delete("mocktest");
 	}
 	
 	public function update($id, $data){
-		$this->db->where('faqID', $id);
-		return $this->db->update('faq', $data);
+		$this->db->where('id', $id);
+		return $this->db->update('mocktest', $data);
 	}
 }

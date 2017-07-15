@@ -9,7 +9,7 @@ class Upload extends CI_Controller {
 		parent::__construct();
 		$this->db->cache_delete_all();
 		$this->load->library('excel');
-		$this->load->model(array('employee', 'chepter','assessment'));
+		$this->load->model(array('employee', 'chepter','assessment','mocktest'));
 		if(!$this->_isAdmin()){
 			if($this->input->is_ajax_request()){
 				exit("Unautherized Access!");
@@ -60,9 +60,7 @@ class Upload extends CI_Controller {
 			$file_name = $upload_data['file_name'];
 			
 			$objReader= PHPExcel_IOFactory::createReader('Excel2007');
-			//Set to read only
 			$objReader->setReadDataOnly(true); 
-			//Load excel file
 			$objPHPExcel=$objReader->load(FCPATH.'uploads/excel/'.$file_name);	
 			
 			$totalrows=$objPHPExcel->setActiveSheetIndex(0)->getHighestRow(); 
@@ -169,62 +167,49 @@ class Upload extends CI_Controller {
 	}
 	
 	
-	public function mockTestQuestion(){
+	public function mocktestQuestion(){
 		$configUpload['upload_path'] = FCPATH.'uploads/excel/';
 		$configUpload['allowed_types'] = 'xls|xlsx|csv';
 		$configUpload['max_size'] = '5000';
+		$testName = $this->input->post("name");
 		$this->load->library('upload', $configUpload);
-		if($this->upload->do_upload('file_to_upload')){			
+		if($this->upload->do_upload('file_to_upload') && $testName != ''){			
 			$upload_data = $this->upload->data();
 			$file_name = $upload_data['file_name'];
 			
 			$objReader= PHPExcel_IOFactory::createReader('Excel2007');
-			
 			$objReader->setReadDataOnly(true); 
-			
 			$objPHPExcel=$objReader->load(FCPATH.'uploads/excel/'.$file_name);	
 			
-			$courseID = $this->input->post("courseID");
-			$assessmentID = $this->input->post("assessmentID");
-			$questionSets = $this->input->post("questionSets");
-			$totalQuestions = $this->input->post("totalQuestions");
+			$totalrows=$objPHPExcel->setActiveSheetIndex(0)->getHighestRow(); 
+			$objWorksheet=$objPHPExcel->setActiveSheetIndex(0); 
+			$questionData = array();
 			
-			$response = array(
-				'uploaded' => true,
-				'message' => 'Questions Uploaded Successfully!'
-			);
-			
-			for($setIdx=1; $setIdx <= $questionSets; $setIdx++){
-				$this->assessment->deleteSet($assessmentID,$setIdx);
-				$totalrows=$objPHPExcel->setActiveSheetIndex($setIdx-1)->getHighestRow();
-				if($totalrows < $totalQuestions){
-					$response['uploaded'] = false;
-					$response['message'] = "Question are less than ".$totalQuestions." for set ".$setIdx.".";
-					break;
-				}
-				$objWorksheet=$objPHPExcel->setActiveSheetIndex($setIdx-1); 
+			for($i=2;$i<=$totalrows;$i++){
 				
-				$questionData = array();
-				
-				for($i=2;$i<=$totalQuestions+1;$i++){
-					
-					$questionData = array(
-						'assessmentID' => $assessmentID,
-						'question' => $objWorksheet->getCellByColumnAndRow(0,$i)->getValue(),
-						'option_1' => $objWorksheet->getCellByColumnAndRow(1,$i)->getValue(),
-						'option_2' => $objWorksheet->getCellByColumnAndRow(2,$i)->getValue(),
-						'option_3' => $objWorksheet->getCellByColumnAndRow(3,$i)->getValue(),
-						'option_4' => $objWorksheet->getCellByColumnAndRow(4,$i)->getValue(),
-						'answer' => $objWorksheet->getCellByColumnAndRow(5,$i)->getValue(),
-						'weight' => $objWorksheet->getCellByColumnAndRow(6,$i)->getValue(),
-						'questionSet' => $setIdx,
-					);
-				
-					$this->assessment->addQuestion($questionData);
-				}
+				$question = $objWorksheet->getCellByColumnAndRow(0,$i)->getValue();
+				$option_1 = $objWorksheet->getCellByColumnAndRow(1,$i)->getValue();
+				$option_2 = $objWorksheet->getCellByColumnAndRow(2,$i)->getValue();
+				$option_3 = $objWorksheet->getCellByColumnAndRow(3,$i)->getValue();
+				$option_4 = $objWorksheet->getCellByColumnAndRow(4,$i)->getValue();
+				$answer   = $objWorksheet->getCellByColumnAndRow(5,$i)->getValue();
+				array_push($questionData, array(
+					'name' => $testName,
+					'question' => $question,
+					'option_1' => $option_1,
+					'option_2' => $option_2,
+					'option_3' => $option_3,
+					'option_4' => $option_4,
+					'answer' => $answer,
+				));
 			}
-			
-			print json_encode($response);
+			if(count($questionData))
+				$this->mocktest->add($questionData);
+
+			print json_encode(array(
+				'uploaded' => true,
+				'message' => count($questionData).' Questions Uploaded Successfully!'
+			));
 			
 		}else{
 			print json_encode( array(

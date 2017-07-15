@@ -21,7 +21,8 @@ class Ajax extends CI_Controller {
 			'assessment',
 			'report',
 			'guideline',
-			'glossary'
+			'glossary',
+			'mocktest'
 		));
 		#loading other modules
 		#--------------
@@ -1506,7 +1507,7 @@ class Ajax extends CI_Controller {
 					if($this->assessment->add($inputs)){
 						echo json_encode( array(
 							'status' => true,
-							'message' => "Assessment Added Successfully"
+							'message' => "Examination Added Successfully"
 						));
 					}else{
 						echo json_encode( array(
@@ -1543,7 +1544,7 @@ class Ajax extends CI_Controller {
 					if($this->assessment->update($assessmentID, $inputs)){
 						echo json_encode( array(
 							'status' => true,
-							'message' => "Assessment Added Successfully"
+							'message' => "Examination Updated Successfully"
 						));
 					}else{
 						echo json_encode( array(
@@ -1563,7 +1564,7 @@ class Ajax extends CI_Controller {
 					echo json_encode( array(
 						'status' => true,
 						'assessment'=> $assessment,
-						'message' => "Assessment loaded Successfully"
+						'message' => "Examination loaded Successfully"
 					));
 				}else{
 					echo json_encode( array(
@@ -1580,7 +1581,7 @@ class Ajax extends CI_Controller {
 				if($this->assessment->delete($assessmentID)){
 					echo json_encode( array(
 						'status' => true,
-						'message' => "Assessment Deleted Successfully"
+						'message' => "Examination Deleted Successfully"
 					));
 				}else{
 					echo json_encode( array(
@@ -1634,6 +1635,85 @@ class Ajax extends CI_Controller {
 						'answer' => $this->input->post("answer"),
 					);
 					if($this->assessment->updateQuestion($assessmentQuestionID, $inputs)){
+						echo json_encode( array(
+							'status' => true,
+							'message' => "Question Update Successfully"
+						));
+					}else{
+						echo json_encode( array(
+							'status' => false,
+							'message' => "Unable to Update"
+						));
+					}
+					return;
+				}
+			break;
+			default:
+		}
+	}
+	
+	public function mocktestAction(){
+		$action = $this->input->post('action');
+		
+		switch($action){
+			case "delete":
+				$mocktest = $this->input->post("name");
+				if($this->mocktest->deleteTest($mocktest)){
+					echo json_encode( array(
+						'status' => true,
+						'message' => "Mocktest Deleted Successfully"
+					));
+				}else{
+					echo json_encode( array(
+						'status' => false,
+						'message' => "Unable to Delete"
+					));
+				}
+				return;
+			break;
+			
+			case "loadQuestion":
+				$id = $this->input->post("id");
+				$question = $this->mocktest->loadQuestion($id);
+				if(!empty($question)){
+					echo json_encode( array(
+						'status' => true,
+						'question' => $question, 
+						'message' => "Question loaded successfully"
+					));
+				}else{
+					echo json_encode( array(
+						'status' => false,
+						'message' => "Unable to load"
+					));
+				}
+				return;
+			break;
+			
+			case "updateQuestion":
+			
+				$this->form_validation->set_error_delimiters('', '');
+				$this->form_validation->set_rules("question", "Question Text", "trim|required");
+				$this->form_validation->set_rules("option_1", "Option 1", "trim|required");
+				$this->form_validation->set_rules("option_2", "Option 2", "trim|required");
+				$this->form_validation->set_rules("answer", "Answer", "trim|required");
+				if($this->form_validation->run() == FALSE){
+					echo json_encode( array(
+						'status' => false,
+						'message' => "<p class='text-danger'>".implode('!</br>',explode('.', validation_errors()))."</p>"
+					));
+					return;
+				}else{
+					$id = $this->input->post("id");
+					$inputs = array(
+						'question' => $this->input->post("question"),
+						'option_1' => $this->input->post("option_1"),
+						'option_2' => $this->input->post("option_2"),
+						'option_3' => $this->input->post("option_3"),
+						'option_4' => $this->input->post("option_4"),
+						'answer' => $this->input->post("answer"),
+					);
+					if($this->mocktest->update($id, $inputs)){
 						echo json_encode( array(
 							'status' => true,
 							'message' => "Question Update Successfully"
