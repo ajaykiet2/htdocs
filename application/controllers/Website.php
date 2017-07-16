@@ -7,10 +7,7 @@ class Website extends CI_Controller {
 	public function __construct(){
 		#calling parent controller
 		parent::__construct();
-		
-		$this->load->model(array('faq','gallery', 'course','accreditation','guideline'));
-		#loading other modules
-		#--------------
+		$this->load->model(array('faq','gallery', 'course','accreditation','guideline','mocktest'));
 	}
 	
 	#default function
@@ -56,33 +53,32 @@ class Website extends CI_Controller {
 	
 	#function for Mocktest and important question
 	public function mocktest(){
+		$mocktests = $this->mocktest->getAll();
 		
-		$pageNum = ($this->uri->segment(2)) ? $this->uri->segment(2) : 1;
-		$limit = 5;
-		$offset = ($pageNum - 1) * $limit;
-		
-		$params = array(
-			'start' => $offset,
-			'limit' => $limit
-		);
-		
-		$faqs = $this->faq->load($params);
-		
-		if($faqs != null){
+		if($mocktests != null){
 			$data = array(
 				"env" => $this->environment->load(),
-				'qadata' => $faqs,
-				'pagination' => (object)array(
-					'total' => $this->faq->total(),
-					'pageNum' => $pageNum,
-					'limit'	=> $limit
-				),
+				'mocktests' => array_keys($mocktests)
 			);
 			$this->load->view('website/mocktest',$data);
 		}else{
 			$data = array(
 				'env' => $this->environment->load(),
 			);
+			$this->load->view('website/error404', $data);
+		}
+	}
+	#function for Mocktest and important question
+	public function mocktestDetail(){
+		$testName = $this->encrypt->decode($this->uri->segment(2));
+		$mocktest = $this->mocktest->load($testName);
+		$data = array(
+			'env' => $this->environment->load(),
+			'questions' => $mocktest
+		);
+		if($mocktest != null){
+			$this->load->view('website/mocktestDetails',$data);
+		}else{
 			$this->load->view('website/error404', $data);
 		}
 	}

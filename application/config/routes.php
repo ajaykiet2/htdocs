@@ -47,6 +47,7 @@ $route['gallery/page'] = 'website/gallery';                      #
 $route['gallery/(:num)'] = 'website/galleryDetail';              #
 $route['gallery/page/(:num)'] = 'website/gallery';               #
 $route['mocktest'] = 'website/mocktest';                         #
+$route['mocktest/(:any)'] = 'website/mocktestDetail';            #
 $route['accreditation'] = 'website/accreditationDetail';         #
 $route['accreditation/(:num)'] = 'website/accreditationDetail';  #
 $route['accreditations'] = 'website/accreditations';             #

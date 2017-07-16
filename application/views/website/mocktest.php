@@ -13,24 +13,21 @@
 					<h4><strong>MOCK TESTS</strong></h4>
 					<div class="row">									
 						<ul class="not-found-links">
-							<li class="col-sm-3">
-								<a href="#">Mock Test 1</a>
+							<?php 
+							if(count($mocktests)): 
+								foreach($mocktests as $test):
+							?>
+								<li class="col-sm-3">
+									<a href="/mocktest/<?=$this->encrypt->encode($test);?>"><?=$test;?></a>
+								</li>
+							<?php 
+								endforeach;
+							else:
+							?>
+							<li class="col-sm-12">
+								<a href="#">NO MOCK TEST AVAILABLE</a>
 							</li>
-							<li class="col-sm-3">
-								<a href="#">Mock Test 1</a>
-							</li>
-							<li class="col-sm-3">
-								<a href="#">Mock Test 1</a>
-							</li>
-							<li class="col-sm-3">
-								<a href="#">Mock Test 1</a>
-							</li>
-							<li class="col-sm-3">
-								<a href="#">Mock Test 1</a>
-							</li>
-							<li class="col-sm-3">
-								<a href="#">Mock Test 1</a>
-							</li>
+							<?php endif;?>
 						</ul>
 					</div><!-- /.row -->
 					<div><br></div>

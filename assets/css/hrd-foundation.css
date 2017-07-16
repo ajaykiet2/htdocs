@@ -2431,7 +2431,7 @@ input[type="search"] {
 
 input[type="radio"],
 input[type="checkbox"] {
-  margin: 4px 0 0;
+  margin: 2px 8px 3px;
   margin-top: 1px \9;
   line-height: normal; }
 
@@ -6203,10 +6203,6 @@ ul {
 /*------------------------------------------------------------------
 [ 8. Forms ]
 */
-input, textarea, button {
-  -webkit-appearance: none;
-  -webkit-font-smoothing: antialiased;
-  resize: none; }
 
 label {
   color: #616161;

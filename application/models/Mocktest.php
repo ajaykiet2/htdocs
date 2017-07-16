@@ -20,6 +20,11 @@ class Mocktest extends CI_Model{
 		}
 		return $mocktests;
 	}
+	public function load($testName){
+		$this->db->where('name',"$testName");
+        $mocktest = $this->db->get("mocktest"); 
+        return ($mocktest->num_rows() > 0) ? $mocktest->result(): null;
+	}
 	
 	public function loadQuestion($questionID){
 		$this->db->where("id",$questionID);
