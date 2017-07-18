@@ -215,7 +215,7 @@ $.slideShow = function(){
 			
 		});
 		window.onunload = function() {
-			$.post("/employee/course/stop?courseID="+$self.courseID, function( data ) {});
+			$.post("/employee/course/stop?courseID="+$self.courseID, function(data) {});
 		};
 		$self.fillSlide(0);
 	};

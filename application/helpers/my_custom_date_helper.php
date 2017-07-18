@@ -155,7 +155,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	}
 	function secondsBetweenTime($time1,$time2){	
 	    date_default_timezone_set("Asia/Kolkata");
-		$diff = $time1 - $time2;
+		$time_1 = new DateTime($time1);
+		$time_2 = new DateTime($time2);
+		$diff = strtotime($time_1) - strtotime($time_2);
 		return $diff;
 	}
 	function modifyDaysToDate($date, $operand, $days, $format ='Y-m-d H:i:s'){

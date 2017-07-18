@@ -147,8 +147,9 @@ class Portal extends CI_Controller {
 		$courseID = $this->encrypt->decode($this->input->get("courseID"));
 		$this->session->set_userdata(array(
 			"studyStartID" => $courseID,
-			"startedAt"	=> getCurrentTimeStamp(),
+			"startedAt"	=> todayTimeStamp(),
 		));
+		
 	}
 	
 	public function stopCourse(){
@@ -165,9 +166,11 @@ class Portal extends CI_Controller {
 		
 		$dataToUpdate = array();
 		
-		$secs = strtotime(getCurrentTimeStamp())-strtotime($startTime);
-	
-		$timeSpent = date("H:i:s",strtotime($empCourse->timeSpent)+$secs);
+		$secs = (strtotime(todayTimeStamp())-strtotime($startTime))+strtotime($empCourse->timeSpent);
+		$myDate = new DateTime($secs);
+		
+		$timeSpent = $myTime->format('H:i:s');
+		echo $timeSpent;
 		if(timeToDecimal($timeSpent) >= 15){
 			$dataToUpdate['eligiblity'] = 'yes';
 		}
