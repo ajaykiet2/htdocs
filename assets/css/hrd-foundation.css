@@ -7491,7 +7491,7 @@ button.btn, button.btn-secondary {
   height: 1px;
   z-index: 100; }
   .header.header-minimal {
-    background-color: #fff; }
+    background-color: #FAFAFA; }
     .header.header-minimal.primary {
       background-color: #1E88E5; }
 
@@ -7640,7 +7640,7 @@ button.btn, button.btn-secondary {
     right: 5px; }
 
 .header-call-to-action {
-  margin: 5px 0px;
+  margin: 68px 0px;
   text-align: center; }
   .header-call-to-action h1 {
     font-size: 40px;

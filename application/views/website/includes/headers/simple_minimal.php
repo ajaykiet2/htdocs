@@ -47,7 +47,7 @@
 					<div class="header-main">
 						<div class="header-title">
 							<a href="/">
-								<img src="/assets/img/hrdlogo.jpg" alt="HRD Foundation - India">
+								<img src="/assets/img/hrdlogo.png" alt="HRD Foundation - India">
 								<strong class="hidden-xs">HRD FOUNDATION - INDIA<sup><small>&reg;</small></sup></strong>
 							</a>
 						</div><!-- /.header-title -->
@@ -56,7 +56,7 @@
 							<div class="nav-main-wrapper">
 								<div class="nav-main-title visible-xs">
 									<a href="/">
-										<img src="/assets/img/hrdlogo.jpg" alt="HRD Foundation - India">
+										<img src="/assets/img/hrdlogo.png" alt="HRD Foundation - India">
 										HRD
 									</a>
 								</div><!-- /.nav-main-title -->
