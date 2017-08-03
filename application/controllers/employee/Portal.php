@@ -30,10 +30,13 @@ class Portal extends CI_Controller {
 		$env = $this->environment->load('employee');
 		$courses = $this->employee->getCourse($env['loggedInEmployee']->employeeID);
 		$empCourses = array();
-		foreach($courses as $course){
-			$course->isAvailable = $this->employee->isCourseAvailable($course->courseID);
-			array_push($empCourses, $course);
+		if(!empty($courses)){
+			foreach($courses as $course){
+				$course->isAvailable = $this->employee->isCourseAvailable($course->courseID);
+				array_push($empCourses, $course);
+			}
 		}
+		
 		$data = array(
 			'env' => $env,
 			'employee' => $this->employee->load($env['loggedInEmployee']->employeeID),
