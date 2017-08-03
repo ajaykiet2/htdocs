@@ -48,7 +48,7 @@ class Reporting extends CI_Controller {
 		
 		$template = 'CandidateReport.xlsx';
 		//set absolute path to directory with template files
-		$templateDir = getcwd()."/application/views/reports/";
+		$templateDir = $_SERVER['DOCUMENT_ROOT']."/application/views/reports/";
  
 		//set config for report
 		$config = array(
@@ -67,7 +67,7 @@ class Reporting extends CI_Controller {
 		);
        
 		// define output directoy 
-		$output_file_dir = getcwd()."/uploads/temp/";
+		$output_file_dir = $_SERVER['DOCUMENT_ROOT']."/uploads/temp/";
  
 		$output_file_excel = $output_file_dir  . "CandidateReport.xlsx";
 		//download excel sheet with data in /tmp folder
