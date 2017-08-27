@@ -1,5 +1,5 @@
 .header-edge{
-	background:url(../img/banners/edge.jpg);
+	background:#1976D2;
 	background-repeat:repeat-x;
 	padding:20px; 
 	color:#FFF;
@@ -15,18 +15,14 @@
 /* Chrome, Safari, Opera */
 @-webkit-keyframes mymove {
     50% {
-        -webkit-filter: grayscale(100%); 
-        filter: grayscale(100%);
-		background-position: 10% 86%; 
+        background:#EC407A;
     }
 }
 
 /* Standard syntax */
 @keyframes mymove {
     50% {
-        -webkit-filter: grayscale(100%); 
-        filter: grayscale(100%);
-		background-position: 10% 86%;
+        background:#EC407A;
     }
 }
 
