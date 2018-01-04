@@ -71,16 +71,17 @@ $hideForgotPassword = ($source == 'login') ? 'display:none' : '';
 		</div>
 	</div>
 
-	<div class="admin-content" style="background:url(/assets/img/tmp/4.jpg) center;background-size: cover;">
-	
+	<div class="admin-content">
 		<div class="admin-content-image-text">
 			<h2>Copyright &copy; 2011 - All Rights Reserved - HRD Foundation-India.</h2>
 		</div>
+
 		<div class="admin-content-image-call-to-action">
 			<i class="fa fa-long-arrow-left"></i>
 			<br>
-			<span>Please login to access the portal.</span>
-		</div> 
+			<span>Please login to access our portal.</span>
+		</div>
+
 		<div class="admin-content-inner">
 			<div class="admin-content-header">
 				<div class="admin-content-header-inner">
